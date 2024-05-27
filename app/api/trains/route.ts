@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const response = await fetch(
       "https://www.irishrail.ie/en-ie/train-timetables/live-departure-train-times?key=skerries&REQ0JourneyStopskeyID=&HWAI%3DJS%21js=yes&HWAI%3DJS%21ajax=yes#live-departure-anchor",
