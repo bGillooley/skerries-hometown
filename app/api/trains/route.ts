@@ -35,7 +35,6 @@ export async function GET(request: Request) {
           });
       });
 
-    console.log(trains);
     return Response.json(trains);
   } catch (err) {
     console.log(err);
