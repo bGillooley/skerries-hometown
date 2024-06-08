@@ -1,9 +1,9 @@
 import * as cheerio from "cheerio";
+export const dynamic = "force-dynamic";
 export async function GET() {
   try {
     const response = await fetch(
-      "https://www.tidetime.org/europe/ireland/skerries.htm",
-      { cache: "no-store" }
+      "https://www.tidetime.org/europe/ireland/skerries.htm"
     );
     const htmlString = await response.text();
     const $ = cheerio.load(htmlString);
