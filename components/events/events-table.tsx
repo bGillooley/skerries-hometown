@@ -24,13 +24,13 @@ export default async function EventsTable() {
         authorId: user.id,
       },
       orderBy: {
-        eventDate: "desc",
+        eventDate: "asc",
       },
     });
   } else {
     events = await prisma.event.findMany({
       orderBy: {
-        eventDate: "desc",
+        eventDate: "asc",
       },
     });
   }

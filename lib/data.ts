@@ -29,7 +29,7 @@ export async function fetchHomepageEvents() {
         },
       },
       orderBy: {
-        eventDate: "desc",
+        eventDate: "asc",
       },
     });
 
