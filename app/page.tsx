@@ -1,4 +1,6 @@
 import themeImg from "../public/skez-tide.jpg";
+import themeImg2 from "../public/skez-drone.jpg";
+import themeImg3 from "../public/skez-night.jpg";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { MdWaves, MdTrain } from "react-icons/md";
@@ -95,10 +97,11 @@ export default async function Home() {
                 </div>
                 <div className="relative hidden lg:block col-span-2 row-span-3 col-start-3 row-start-1">
                   <div className="flex flex-col place-content-end relative rounded-md w-full h-full mb-2 lg:mb-0 bg-sky-700 hover:bg-sky-800">
-                    <img
-                      src="/static/skez-drone.jpg"
-                      className="absolute z-0 rounded-md w-full h-full object-cover"
-                      alt="Skez Drone"
+                    <Image
+                      className="z-0 absolute w-full h-full object-cover rounded"
+                      src={themeImg2}
+                      quality={50}
+                      alt="Skerries Rules"
                     />
                   </div>
                 </div>
@@ -113,10 +116,11 @@ export default async function Home() {
                 </div>
                 <div className="row-span-3 col-start-4 hidden lg:block  row-start-4">
                   <div className="flex flex-col place-content-end relative rounded-md w-full h-full bg-slate-500">
-                    <img
-                      src="/static/skez-night.jpg"
-                      className="absolute z-0 rounded-md w-full h-full object-cover"
-                      alt="Skez Drone"
+                    <Image
+                      className="z-0 absolute w-full h-full object-cover rounded"
+                      src={themeImg3}
+                      quality={50}
+                      alt="Skerries Rules"
                     />
                   </div>
                 </div>

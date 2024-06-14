@@ -159,10 +159,10 @@ export default function EventModule({ event }: { event: Event }) {
                         <div className="text-left  md:text-left md:px-0 text-base h-36 overflow-auto pt-1 text-slate-500">
                           {event.content}
                         </div>
-                        {event.linkUrl !== null && (
+                        {event.linkUrl !== "" && (
                           <a
                             className="inline-block cursor-pointer justify-center rounded-lg text-xs font-semibold mt-4 text-slate-700 py-2.5 px-4 bg-slate-100 hover:bg-slate-200"
-                            href={event.linkUrl}
+                            href={(event.linkUrl = event.linkUrl || "")}
                             target="_blank"
                           >
                             {event.linkDesc}

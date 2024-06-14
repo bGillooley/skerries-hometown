@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdArrowForwardIos, MdTrain, MdInfoOutline } from "react-icons/md";
+import { v4 as uuidv4 } from "uuid";
 
 const Trains = ({
   showTrains,
@@ -11,9 +12,7 @@ const Trains = ({
   setShowTrains: any;
 }) => {
   const [northBoundTrains, setNorthBoundTrains] = useState([]);
-  //const [southBoundTrains, setSouthBoundTrains] = useState([]);
-  //const [topHeading, setTopHeading] = useState("");
-  //const [btmHeading, setBtmHeading] = useState("");
+
   const [loading, setLoading] = useState(false);
 
   function getTrains() {
@@ -24,9 +23,6 @@ const Trains = ({
         JSON.stringify(data.details1);
         console.log("This is...", data);
         setNorthBoundTrains(data.details1);
-        //setSouthBoundTrains(data.details2);
-        //setTopHeading(data.heading1);
-        //setBtmHeading(data.heading2);
 
         setLoading(false);
       });
@@ -145,7 +141,7 @@ const Trains = ({
                               return (
                                 <tr
                                   className="odd:bg-slate-100 even:bg-white"
-                                  key={e.eta}
+                                  key={uuidv4()}
                                 >
                                   <td className="relative text-left p-1">
                                     <div>{e.destination}</div>
