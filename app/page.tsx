@@ -6,13 +6,16 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import ShowTrains from "@/components/trains/show-trains";
 import ShowTides from "@/components/tides/show-tides";
 import ShowWeather from "@/components/weather/show-weather";
+import { fetchHomepageEvents } from "@/lib/data";
+import EventModule from "@/components/Event";
 
 export const metadata: Metadata = {
   title: "Skerries Hometown App",
   description: "Skerries Community App",
 };
 
-export default function Home() {
+export default async function Home() {
+  const events = await fetchHomepageEvents();
   return (
     <>
       <div className="relative bg-black">
@@ -68,16 +71,16 @@ export default function Home() {
             <div className="w-full lg:w-2/3">
               <h2 className="text-slate-100 text-4xl pb-3">What's On</h2>
               <div className="lg:grid lg:grid-cols-4 lg:grid-rows-6 gap-2">
-                {/*props.feed.map((event, index) => (
+                {events.map((event, index) => (
                   <div
                     key={event.id}
                     className={`mb-2 lg:mb-0 col-span-2 col-start-1 row-start-${
                       index + 1
                     }`}
                   >
-                    <Event event={event} />
+                    <EventModule event={event} />
                   </div>
-                )) */}
+                ))}
                 <div className="row-start-7">
                   <button
                     className="inline-flex mb-6 md:mb-0 w-full text-black md:w-auto cursor-pointer justify-center rounded-lg text-xs font-semibold py-2.5 px-4 bg-orange-300 hover:bg-orange-400 tracking-wider"

@@ -1,6 +1,7 @@
 import * as cheerio from "cheerio";
-export const dynamic = "force-dynamic";
+import { unstable_noStore as noStore } from "next/cache";
 export async function GET() {
+  noStore();
   try {
     const response = await fetch(
       "https://www.tidetime.org/europe/ireland/skerries.htm"

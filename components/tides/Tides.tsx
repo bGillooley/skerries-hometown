@@ -16,7 +16,7 @@ const Tides = ({
 
   function getTides() {
     setLoading(true);
-    fetch("/api/tides", { cache: "no-store" })
+    fetch("/api/tides")
       .then((res) => res.json())
       .then((data) => {
         const tideStuff = JSON.parse(JSON.stringify(data));

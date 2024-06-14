@@ -1,7 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["maps.googleapis.com", "cdn.weatherapi.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "maps.googleapis.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.weatherapi.com",
+        port: "",
+      },
+    ],
   },
 };
 
