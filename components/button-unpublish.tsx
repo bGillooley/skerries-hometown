@@ -12,7 +12,7 @@ export default function ButtonUnPublish() {
       disabled={pending}
       title="Unpublish event"
     >
-      <span className="sr-only">Delete</span>
+      <span className="sr-only">Unpublish Event</span>
       {pending ? (
         <IconLoading />
       ) : (
