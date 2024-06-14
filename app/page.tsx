@@ -10,6 +10,7 @@ import ShowTides from "@/components/tides/show-tides";
 import ShowWeather from "@/components/weather/show-weather";
 import { fetchHomepageEvents } from "@/lib/data";
 import EventModule from "@/components/Event";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Skerries Hometown App",
@@ -74,12 +75,14 @@ export default async function Home() {
                   </div>
                 ))}
                 <div className="row-start-7">
-                  <button
+                  <Link
+                    href="/events/all"
                     className="inline-flex mb-6 md:mb-0 w-full text-black md:w-auto cursor-pointer justify-center rounded-lg text-xs font-semibold py-2.5 px-4 bg-orange-300 hover:bg-orange-400 tracking-wider"
+                    title="View all events"
                     tabIndex={0}
                   >
                     VIEW ALL EVENTS
-                  </button>
+                  </Link>
                 </div>
                 <div className="relative hidden lg:block col-span-2 row-span-3 col-start-3 row-start-1">
                   <div className="flex flex-col place-content-end relative rounded-md w-full h-full mb-2 lg:mb-0 bg-sky-700 hover:bg-sky-800">

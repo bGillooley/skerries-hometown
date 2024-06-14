@@ -40,3 +40,69 @@ export async function fetchHomepageEvents() {
     throw new Error("Failed to fetch events.");
   }
 }
+
+export async function fetchFilteredEvents(category: string) {
+  noStore();
+  if (category === "all") {
+    try {
+      let events = await prisma.event.findMany({
+        where: {
+          published: true,
+          eventDate: {
+            gte: addHours(new Date(), -6),
+          },
+        },
+        orderBy: {
+          eventDate: "asc",
+        },
+      });
+
+      return events;
+    } catch (error) {
+      console.error("Database Error:", error);
+      throw new Error("Failed to fetch events.");
+    }
+  } else {
+    try {
+      let events = await prisma.event.findMany({
+        where: {
+          published: true,
+          category: category,
+          eventDate: {
+            gte: addHours(new Date(), -6),
+          },
+        },
+        orderBy: {
+          eventDate: "asc",
+        },
+      });
+
+      return events;
+    } catch (error) {
+      console.error("Database Error:", error);
+      throw new Error("Failed to fetch events.");
+    }
+  }
+}
+
+export async function fetchAllEvents() {
+  noStore();
+  try {
+    let events = await prisma.event.findMany({
+      where: {
+        published: true,
+        eventDate: {
+          gte: addHours(new Date(), -6),
+        },
+      },
+      orderBy: {
+        eventDate: "asc",
+      },
+    });
+
+    return events;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch events.");
+  }
+}
