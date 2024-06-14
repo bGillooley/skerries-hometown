@@ -12,6 +12,10 @@ import EventModule from "@/components/Event";
 export const metadata: Metadata = {
   title: "Skerries Hometown App",
   description: "Skerries Community App",
+  robots: {
+    follow: false,
+    index: false,
+  },
 };
 
 export default async function Home() {
