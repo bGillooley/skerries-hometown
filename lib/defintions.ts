@@ -2,10 +2,10 @@ export type Event = {
   id: string;
   title: string;
   category: string;
-  content: string | null;
+  content: string | undefined | null;
   address: string;
   eventDate: Date;
-  eventTime: string | null;
+  eventTime: string | undefined | null;
   venue: string;
   linkUrl?: string | null;
   linkDesc?: string | null;

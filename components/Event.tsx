@@ -71,16 +71,16 @@ export default function EventModule({ event }: { event: Event }) {
       >
         <div className="flex flex-col pr-4">
           <div className="text-center uppercase">
-            {formatDateMonth(event.eventDate)}
+            {formatDateMonth(event.eventDate.toString())}
           </div>
           <div className="text-center text-xl">
-            {formatDateDay(event.eventDate)}
+            {formatDateDay(event.eventDate.toString())}
           </div>
         </div>
         <div className="grow">
           <div className="text-sm text-slate-500">
             <span className="font-bold capitalize ">{event.category}</span> -
-            {formatDateWeekDay(event.eventDate)} - {event.eventTime}
+            {formatDateWeekDay(event.eventDate.toString())} - {event.eventTime}
           </div>
           <div className="text-base text-sky-700 font-semibold">
             {event.title}
@@ -129,7 +129,7 @@ export default function EventModule({ event }: { event: Event }) {
                     </h2>
 
                     <div className="text-xs flex font-semibold uppercase text-slate-300 tracking-wider">
-                      <div>{formatDateLong(event.eventDate)}</div>
+                      <div>{formatDateLong(event.eventDate.toString())}</div>
                       <div className="pl-2 pr-0.5 flex items-center">
                         <MdAccessTime />
                       </div>
@@ -170,10 +170,10 @@ export default function EventModule({ event }: { event: Event }) {
                         )}
                         <add-to-calendar-button
                           name={event.title}
-                          description={event.content}
-                          startDate={calendarDate(event.eventDate)}
-                          startTime={event.eventTime}
-                          endTime={event.eventTime}
+                          description={event.content!}
+                          startDate={calendarDate(event.eventDate.toString())}
+                          startTime={event.eventTime!}
+                          endTime={event.eventTime!}
                           timeZone="Europe/Dublin"
                           location={event.address}
                           options="'Apple','Google','iCal','Outlook.com'"
