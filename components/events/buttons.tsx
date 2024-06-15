@@ -17,7 +17,7 @@ export function CreateEvent() {
       href="/dashboard/create-event"
       className="flex h-10 justify-between items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
     >
-      <span>Create Invoice</span> <PlusIcon className="w-5" />
+      <span>Create Event</span> <PlusIcon className="w-5 ml-2" />
     </Link>
   );
 }

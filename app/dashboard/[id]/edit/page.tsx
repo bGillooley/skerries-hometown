@@ -11,6 +11,9 @@ export default async function page({ params }: { params: { id: string } }) {
 
   return (
     <main>
+      <div className="text-xl md:text-3xl">
+        Your Events / <span className=" text-gray-400">Edit an event</span>
+      </div>
       <EventsEditForm event={event} />
     </main>
   );

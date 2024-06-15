@@ -117,7 +117,11 @@ export default async function EventsTable() {
                     {formatDateToLocal(event.eventDate.toISOString())}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {event.published ? "Published" : "Pending"}
+                    {event.published ? (
+                      <span className="text-green-500">Published</span>
+                    ) : (
+                      <span className="text-red-500">Pending</span>
+                    )}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     <div className="flex justify-end gap-3">

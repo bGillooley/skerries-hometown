@@ -50,7 +50,7 @@ export default async function Home() {
           </div>
         </div>
       </div>
-      <main>
+      <main className="bg-black">
         <div className="relative flex flex-col 2xl:place-content-center lg:min-h-screen">
           <div className="relative pt-12 pb-16 container mx-auto flex z-20 px-4">
             <div className="hidden lg:flex w-1/3 flex-col place-content-end pr-10 pb-16">

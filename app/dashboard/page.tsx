@@ -17,9 +17,12 @@ export default async function page() {
   }
 
   return (
-    <div>
-      <CreateEvent />
+    <>
+      <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div className="flex flex-shrink-0 text-3xl">Your Events</div>
+        <CreateEvent />
+      </div>
       <EventsTable />
-    </div>
+    </>
   );
 }
