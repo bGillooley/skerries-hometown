@@ -19,6 +19,11 @@
 body {
 }
 
+.font-alegreya {
+  font-family: var(--font-alegreya);
+  font-weight: 900;
+}
+
 /* TIDE COMPONENT */
 
 .tidal-state {

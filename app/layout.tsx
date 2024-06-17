@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Alegreya } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+const alegreya = Alegreya({
+  subsets: ["latin"],
+  display: "swap",
+  style: "italic",
+  variable: "--font-alegreya",
+});
 
 export const metadata: Metadata = {
   title: "Skerries Hometown App",
@@ -19,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${inter.variable} ${alegreya.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

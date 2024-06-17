@@ -8,9 +8,10 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import ShowTrains from "@/components/trains/show-trains";
 import ShowTides from "@/components/tides/show-tides";
 import ShowWeather from "@/components/weather/show-weather";
-import { fetchHomepageEvents } from "@/lib/data";
-import EventModule from "@/components/Event";
+
 import Link from "next/link";
+import { Suspense } from "react";
+import HomepageEvents from "@/components/events/homepage-events";
 
 export const metadata: Metadata = {
   title: "Skerries Hometown App",
@@ -22,7 +23,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const events = await fetchHomepageEvents();
   return (
     <>
       <div className="relative bg-black">
@@ -38,14 +38,19 @@ export default async function Home() {
             alt="Skerries Rules"
           />
           <div className="absolute z-10  w-full h-full bg-gradient-to-t  from-black"></div>
-          <div className="relative pt-16 pb-6 px-6 z-20 lg:hidden">
-            <h1 className="text-6xl 2xl:text-8xl text-slate-100 text-center">
+          <div className="relative pt-12 pb-6 px-6 z-20 lg:hidden">
+            <Image
+              src="/hometown-logo5.png"
+              alt="Hometown Logo"
+              width={818}
+              height={788}
+              className=" px-12"
+            />
+            <h1 className="text-7xl text-slate-100 text-center font-alegreya">
               Skerries
             </h1>
-            <p className="text-slate-100 text-2xl text-center">Hometown</p>
-
-            <p className="text-slate-100 text-base text-center">
-              It's a local app... for local people
+            <p className="text-teal-600 text-3xl text-center font-alegreya">
+              Your Town, Your Events
             </p>
           </div>
         </div>
@@ -53,27 +58,27 @@ export default async function Home() {
       <main className="bg-black">
         <div className="relative flex flex-col 2xl:place-content-center lg:min-h-screen">
           <div className="relative pt-12 pb-16 container mx-auto flex z-20 px-4">
-            <div className="hidden lg:flex w-1/3 flex-col place-content-end pr-10 pb-16">
-              <h1 className="text-6xl 2xl:text-8xl text-slate-100">Skerries</h1>
-              <p className="text-slate-100 text-3xl">Hometown</p>
-
-              <p className="text-slate-100 text-xl pr-8">
-                It's a local app... for local people
+            <div className="hidden lg:flex w-1/3 flex-col items-center justify-center">
+              <Image
+                src="/hometown-logo5.png"
+                alt="Hometown Logo"
+                width={818}
+                height={788}
+                className=" px-12"
+              />
+              <h1 className="text-6xl 2xl:text-8xl text-slate-100 font-alegreya text-center">
+                Skerries
+              </h1>
+              <p className=" text-3xl font-alegreya text-teal-600 text-center">
+                Your Town, Your Events
               </p>
             </div>
             <div className="w-full lg:w-2/3">
               <h2 className="text-slate-100 text-4xl pb-3">What's On</h2>
               <div className="lg:grid lg:grid-cols-4 lg:grid-rows-6 gap-2">
-                {events.map((event, index) => (
-                  <div
-                    key={event.id}
-                    className={`mb-2 lg:mb-0 col-span-2 col-start-1 row-start-${
-                      index + 1
-                    }`}
-                  >
-                    <EventModule event={event} />
-                  </div>
-                ))}
+                <Suspense fallback={<div>loading...</div>}>
+                  <HomepageEvents />
+                </Suspense>
                 <div className="row-start-7">
                   <Link
                     href="/events/all"
@@ -85,7 +90,7 @@ export default async function Home() {
                   </Link>
                 </div>
                 <div className="relative hidden lg:block col-span-2 row-span-3 col-start-3 row-start-1">
-                  <div className="flex flex-col place-content-end relative rounded-md w-full h-full mb-2 lg:mb-0 bg-sky-700 hover:bg-sky-800">
+                  <div className="flex flex-col place-content-end relative rounded-md w-full h-full mb-2 lg:mb-0 bg-teal-600 hover:bg-teal-800">
                     <Image
                       className="z-0 absolute w-full h-full object-cover rounded"
                       src={themeImg2}
@@ -95,16 +100,22 @@ export default async function Home() {
                   </div>
                 </div>
                 <div className="mb-2 lg:mb-0 row-span-1 col-start-3 row-start-4">
-                  <ShowTrains />
+                  <Suspense fallback={<div>loading...</div>}>
+                    <ShowTrains />
+                  </Suspense>
                 </div>
                 <div className="mb-2 lg:mb-0 row-span-1 col-start-3 row-start-5">
-                  <ShowTides />
+                  <Suspense fallback={<div>loading...</div>}>
+                    <ShowTides />
+                  </Suspense>
                 </div>
                 <div className="mb-2 lg:mb-0 row-span-1 col-start-3 row-start-6">
-                  <ShowWeather />
+                  <Suspense fallback={<div>loading...</div>}>
+                    <ShowWeather />
+                  </Suspense>
                 </div>
                 <div className="row-span-3 col-start-4 hidden lg:block  row-start-4">
-                  <div className="flex flex-col place-content-end relative rounded-md w-full h-full bg-slate-500">
+                  <div className="flex flex-col place-content-end relative rounded-md w-full h-full bg-teal-600">
                     <Image
                       className="z-0 absolute w-full h-full object-cover rounded"
                       src={themeImg3}

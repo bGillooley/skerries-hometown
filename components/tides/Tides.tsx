@@ -90,7 +90,7 @@ const Tides = ({
                 exit={{ y: 500, opacity: 0 }}
               >
                 <div className="relative w-full pt-0  md:p-0 text-white">
-                  <div className="relative bg-sky-700 rounded-t-lg p-4 pt-6 md:mx-1">
+                  <div className="relative bg-teal-700 rounded-t-lg p-4 pt-6 md:mx-1">
                     <button
                       className="flex absolute right-4 top-2 flex-col place-content-center mb-2  z-50"
                       onClick={handleHideTidesClick}
@@ -144,7 +144,7 @@ const Tides = ({
                     })}
                   </div>
                 </div>
-                <div className="hidden md:block bg-sky-700 p-1 rounded-b-2xl mx-1"></div>
+                <div className="hidden md:block bg-teal-700 p-1 rounded-b-2xl mx-1"></div>
               </motion.div>
             </div>
           </div>

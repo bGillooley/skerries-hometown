@@ -7,7 +7,7 @@ export default function ShowTrains() {
   return (
     <>
       <div
-        className="relative flex py-2 flex-col justify-center content-center cursor-pointer rounded-md w-full h-full bg-sky-700 hover:bg-sky-800"
+        className="relative flex py-2 flex-col justify-center content-center cursor-pointer rounded-md w-full h-full bg-teal-700 hover:bg-teal-800"
         onClick={() => setShowTrains(true)}
         onKeyUp={(e) => {
           e.key === "Enter" && setShowTrains(true);

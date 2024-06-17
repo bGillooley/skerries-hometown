@@ -7,7 +7,7 @@ export default function ShowTides() {
   return (
     <>
       <div
-        className="relative flex flex-col py-2 justify-center content-center cursor-pointer rounded-md w-full h-full bg-sky-700 hover:bg-sky-800"
+        className="relative flex flex-col py-2 justify-center content-center cursor-pointer rounded-md w-full h-full bg-teal-700 hover:bg-teal-800"
         onClick={() => setShowTides(true)}
         onKeyUp={(e) => {
           e.key === "Enter" && setShowTides(true);

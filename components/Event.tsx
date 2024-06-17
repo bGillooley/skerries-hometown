@@ -82,7 +82,7 @@ export default function EventModule({ event }: { event: Event }) {
             <span className="font-bold capitalize ">{event.category}</span> -
             {formatDateWeekDay(event.eventDate.toString())} - {event.eventTime}
           </div>
-          <div className="text-base text-sky-700 font-semibold">
+          <div className="text-base text-teal-600 font-semibold">
             {event.title}
           </div>
           <div className="text-sm text-slate-500">{event.venue}</div>
@@ -107,7 +107,7 @@ export default function EventModule({ event }: { event: Event }) {
                 exit={{ y: 500, opacity: 0 }}
               >
                 <div className="w-full pt-0  md:p-0 text-white">
-                  <div className="bg-sky-700 rounded-t-lg p-4  md:mx-1">
+                  <div className="bg-teal-700 rounded-t-lg p-4  md:mx-1">
                     <button
                       className="flex absolute right-4 top-2 flex-col place-content-center mb-2  z-50"
                       onClick={handleHideModalClick}
@@ -214,7 +214,7 @@ export default function EventModule({ event }: { event: Event }) {
                     </div>
                   </div>
                 </div>
-                <div className="hidden sm:block p-1 bg-sky-700 text-center rounded-b-lg mx-1"></div>
+                <div className="hidden sm:block p-1 bg-teal-700 text-center rounded-b-lg mx-1"></div>
               </motion.div>
             </div>
           </div>

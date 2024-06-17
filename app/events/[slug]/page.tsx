@@ -1,14 +1,11 @@
-import { Event } from "@/lib/defintions";
-import EventModule from "@/components/Event";
 import Link from "next/link";
 import Image from "next/image";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
-import { fetchAllEvents, fetchFilteredEvents } from "@/lib/data";
 import themeImg from "../../../public/skerries-drone-view.jpg";
 import clsx from "clsx";
+import { Suspense } from "react";
+import EventsPageList from "@/components/events/events-page-list";
 export default async function page({ params }: { params: { slug: string } }) {
-  const events = await fetchFilteredEvents(params.slug);
-
   return (
     <>
       <div className="absolute z-50 top-4 left-4 md:top-8 md:left-8 text-3xl text-slate-100">
@@ -77,7 +74,7 @@ export default async function page({ params }: { params: { slug: string } }) {
                   params.slug === "sport" && "font-bold"
                 )}
               >
-                All
+                Sports
               </Link>
             </div>
           </div>
@@ -177,11 +174,9 @@ export default async function page({ params }: { params: { slug: string } }) {
                 </div>
               </nav>
               <main className="grow">
-                {events.map((event) => (
-                  <div key={event.id} className="mb-2">
-                    <EventModule event={event} />
-                  </div>
-                ))}
+                <Suspense fallback={<div>Loading</div>}>
+                  <EventsPageList category={params.slug} />
+                </Suspense>
               </main>
             </div>
           </div>
