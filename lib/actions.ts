@@ -108,7 +108,7 @@ export async function createEvent(
     };
   }
   revalidatePath("/dashboard");
-
+  revalidatePath("/");
   redirect("/dashboard");
 }
 
