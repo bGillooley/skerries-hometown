@@ -44,6 +44,9 @@ export default async function EventsTable() {
   if (session?.user?.email === "jackdinan@gmail.com") {
     superUser = true;
   }
+  if (session?.user?.email === "william.gillooley@gmail.com") {
+    superUser = true;
+  }
   if (superUser) {
     events = await getAllCachedEvents();
   } else {
