@@ -18,7 +18,6 @@ export async function fetchEventById(id: string) {
 }
 
 export async function fetchHomepageEvents() {
-  noStore();
   try {
     let events = await prisma.event.findMany({
       take: 6,
@@ -33,7 +32,6 @@ export async function fetchHomepageEvents() {
       },
     });
 
-    console.log("Billy g: ", events);
     return events;
   } catch (error) {
     console.error("Database Error:", error);
