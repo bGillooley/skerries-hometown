@@ -4,6 +4,7 @@ import { z } from "zod";
 import { auth } from "@/auth";
 import { User } from "./defintions";
 import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 export type State = {
@@ -108,7 +109,6 @@ export async function createEvent(
     };
   }
   revalidatePath("/dashboard");
-  revalidatePath("/");
   redirect("/dashboard");
 }
 
@@ -170,7 +170,7 @@ export async function updateEvent(
       message: "Database Error: Failed to create event",
     };
   }
-  revalidatePath("/dashboard");
+
   redirect("/dashboard");
 }
 
@@ -214,7 +214,8 @@ export async function deleteEvent(id: string) {
         id: id,
       },
     });
-    revalidatePath("/dashboard");
+    revalidateTag("homepage-events");
+    revalidateTag("all-events");
     return { message: "Deleted event" };
   } catch (error) {
     return { message: "Database Error: Failed to delete evemt." };
@@ -232,6 +233,8 @@ export async function publishEvent(id: string) {
       },
     });
     revalidatePath("/dashboard");
+    revalidateTag("homepage-events");
+    revalidateTag("all-events");
     return { message: "Published event" };
   } catch (error) {
     return { message: "Database Error: Failed to publish evemt." };
@@ -249,6 +252,8 @@ export async function unPublishEvent(id: string) {
       },
     });
     revalidatePath("/dashboard");
+    revalidateTag("homepage-events");
+    revalidateTag("all-events");
     return { message: "Published event" };
   } catch (error) {
     return { message: "Database Error: Failed to publish evemt." };

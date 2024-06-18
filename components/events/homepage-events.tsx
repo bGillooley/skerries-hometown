@@ -1,8 +1,15 @@
 import { fetchHomepageEvents } from "@/lib/data";
 import EventModule from "@/components/Event";
+import { unstable_cache } from "next/cache";
+
+const getCachedEvents = unstable_cache(
+  async () => fetchHomepageEvents(),
+  ["homepage-events-cached"],
+  { tags: ["homepage-events"] }
+);
 
 export default async function HomepageEvents() {
-  const events = await fetchHomepageEvents();
+  const events = await getCachedEvents();
   return (
     <>
       {events.map((event, index) => (

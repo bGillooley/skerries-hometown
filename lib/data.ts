@@ -1,4 +1,3 @@
-import { unstable_noStore as noStore } from "next/cache";
 import prisma from "./prisma";
 import { addHours } from "./utils";
 export async function fetchEventById(id: string) {
