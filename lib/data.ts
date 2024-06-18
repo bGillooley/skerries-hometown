@@ -83,20 +83,43 @@ export async function fetchFilteredEvents(category: string) {
 export async function fetchAllEvents() {
   try {
     let events = await prisma.event.findMany({
+      orderBy: {
+        eventDate: "asc",
+      },
+    });
+    return events;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch events.");
+  }
+}
+export async function fetchAllEventsByUserId(id: string) {
+  try {
+    let events = await prisma.event.findMany({
       where: {
-        published: true,
-        eventDate: {
-          gte: addHours(new Date(), -6),
-        },
+        authorId: id,
       },
       orderBy: {
         eventDate: "asc",
       },
     });
-
     return events;
   } catch (error) {
     console.error("Database Error:", error);
     throw new Error("Failed to fetch events.");
+  }
+}
+
+export async function getLogginInUser(email: string) {
+  try {
+    const user = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch user.");
   }
 }

@@ -1,7 +1,11 @@
 import React from "react";
-import prisma from "@/lib/prisma";
 import { auth } from "@/auth";
 import { formatDateToLocal } from "@/lib/utils";
+import {
+  fetchAllEventsByUserId,
+  fetchAllEvents,
+  getLogginInUser,
+} from "@/lib/data";
 import {
   DeleteEvent,
   DuplicateEvent,
@@ -9,30 +13,40 @@ import {
   PublishEvent,
   UnPublishEvent,
 } from "./buttons";
+
+import { unstable_cache } from "next/cache";
+
+const getAllCachedEvents = unstable_cache(
+  async () => fetchAllEvents(),
+  ["dashboard-events-cached"],
+  { tags: ["all-dashboard-events"] }
+);
+
+const getAllCachedEventsByUserId = unstable_cache(
+  async (id) => fetchAllEventsByUserId(id),
+  ["dashboard-events-by-user-id-cached"],
+  { tags: ["all-dashboard-events-by-user-id"] }
+);
+
+const getUserByEmail = unstable_cache(
+  async (email) => getLogginInUser(email),
+  ["user-by-email"],
+  { tags: ["logged-in-user"] }
+);
+
 export default async function EventsTable() {
   const session = await auth();
   let events = undefined;
-  const user = await prisma.user.findUnique({
-    where: {
-      email: session?.user?.email || undefined,
-    },
-  });
-
-  if (user?.role === "editor") {
-    events = await prisma.event.findMany({
-      where: {
-        authorId: user.id,
-      },
-      orderBy: {
-        eventDate: "asc",
-      },
-    });
+  let superUser = false;
+  if (session?.user?.email === "gillooley@gmail.com" || "jackdinan@gmail.com") {
+    superUser = true;
+  }
+  if (superUser) {
+    events = await getAllCachedEvents();
   } else {
-    events = await prisma.event.findMany({
-      orderBy: {
-        eventDate: "asc",
-      },
-    });
+    const user = await getUserByEmail(session?.user?.email as string);
+    events = await getAllCachedEventsByUserId(user?.id as string);
+    console.log("NOT Superuser...", events);
   }
 
   return (
@@ -59,14 +73,16 @@ export default async function EventsTable() {
                 <div className="flex w-full items-center justify-between pt-4">
                   <div>
                     <p className="text-xl font-medium">
-                      {formatDateToLocal(event.eventDate.toISOString())}
+                      {formatDateToLocal(
+                        new Date(event.eventDate).toISOString()
+                      )}
                     </p>
                   </div>
                   <div className="flex justify-end gap-2">
-                    {user?.role === "admin" && event.published && (
+                    {superUser && event.published && (
                       <UnPublishEvent id={event.id} />
                     )}
-                    {user?.role === "admin" && !event.published && (
+                    {superUser && !event.published && (
                       <PublishEvent id={event.id} />
                     )}
                     <UpdateEvent id={event.id} />
@@ -114,7 +130,7 @@ export default async function EventsTable() {
                     {event.content}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {formatDateToLocal(event.eventDate.toISOString())}
+                    {formatDateToLocal(new Date(event.eventDate).toISOString())}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {event.published ? (
@@ -125,10 +141,10 @@ export default async function EventsTable() {
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     <div className="flex justify-end gap-3">
-                      {user?.role === "admin" && event.published && (
+                      {superUser && event.published && (
                         <UnPublishEvent id={event.id} />
                       )}
-                      {user?.role === "admin" && !event.published && (
+                      {superUser && !event.published && (
                         <PublishEvent id={event.id} />
                       )}
                       <UpdateEvent id={event.id} />
