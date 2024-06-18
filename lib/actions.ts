@@ -108,6 +108,8 @@ export async function createEvent(
     };
   }
   revalidatePath("/dashboard");
+  revalidatePath("/");
+  revalidatePath("/events/all");
   redirect("/dashboard");
 }
 

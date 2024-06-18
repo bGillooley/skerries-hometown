@@ -2,7 +2,6 @@ import { unstable_noStore as noStore } from "next/cache";
 import prisma from "./prisma";
 import { addHours } from "./utils";
 export async function fetchEventById(id: string) {
-  noStore();
   try {
     const event = await prisma.event.findUnique({
       where: {
@@ -40,7 +39,6 @@ export async function fetchHomepageEvents() {
 }
 
 export async function fetchFilteredEvents(category: string) {
-  noStore();
   if (category === "all") {
     try {
       let events = await prisma.event.findMany({
@@ -84,7 +82,6 @@ export async function fetchFilteredEvents(category: string) {
 }
 
 export async function fetchAllEvents() {
-  noStore();
   try {
     let events = await prisma.event.findMany({
       where: {
