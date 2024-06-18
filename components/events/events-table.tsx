@@ -38,7 +38,10 @@ export default async function EventsTable() {
   const session = await auth();
   let events = undefined;
   let superUser = false;
-  if (session?.user?.email === "gillooley@gmail.com" || "jackdinan@gmail.com") {
+  if (session?.user?.email === "gillooley@gmail.com") {
+    superUser = true;
+  }
+  if (session?.user?.email === "jackdinan@gmail.com") {
     superUser = true;
   }
   if (superUser) {
@@ -46,7 +49,6 @@ export default async function EventsTable() {
   } else {
     const user = await getUserByEmail(session?.user?.email as string);
     events = await getAllCachedEventsByUserId(user?.id as string);
-    console.log("NOT Superuser...", events);
   }
 
   return (
