@@ -160,8 +160,8 @@ export default function EventModule({ event }: { event: Event }) {
                   </div>
                 </div>
                 <div className="relative flex flex-col  md:flex-row bg-white">
-                  <div className="h-screen md:h-auto md:flex md:flex-col justify-between  md:flex-1">
-                    <div className="p-4 flex flex-grow">
+                  <div className="h-screen md:h-full md:flex md:flex-col justify-between  md:flex-1">
+                    <div className="p-4 flex">
                       <div className="p-2 flex-grow border-3 subpixel-antialiased rounded-md">
                         <div className="md:text-left md:pt-0 text-lg">
                           <div className="text-xs tracking-wider font-semibold text-slate-400">
@@ -181,10 +181,10 @@ export default function EventModule({ event }: { event: Event }) {
                         </button>
                         <div className=" mt-4 mb-4 w-[50px] h-[4px] bg-sky-900"></div>
 
-                        <div className="text-xs tracking-wider font-semibold text-slate-400">
+                        <div className="text-xs tracking-wider mb-2 font-semibold text-slate-400">
                           DESCRIPTION
                         </div>
-                        <div className="text-left border-2 rounded-sm  md:text-left md:px-0 text-sm  h-36 overflow-auto p-2 text-slate-500">
+                        <div className="text-left border-2 rounded  md:text-left p-2 text-sm  h-44 overflow-auto  text-slate-500">
                           {event.content}
                         </div>
                         {event.linkUrl !== "" && (

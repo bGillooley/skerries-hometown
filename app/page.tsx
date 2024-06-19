@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import ShowTrains from "@/components/trains/show-trains";
 import ShowTides from "@/components/tides/show-tides";
 import ShowWeather from "@/components/weather/show-weather";
-
+import { addHours } from "@/lib/utils";
 import Link from "next/link";
 import { Suspense } from "react";
 import HomepageEvents from "@/components/events/homepage-events";
@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   },
 };
 
+const theeventtime = addHours(new Date(), -6);
+console.log(theeventtime);
 export default async function Home() {
   return (
     <>
@@ -72,9 +74,6 @@ export default async function Home() {
               </p>
             </div>
             <div className="w-full lg:w-2/3">
-              <h2 className="text-slate-100 text-4xl pb-3 font-alegreya">
-                What's On
-              </h2>
               <div className="lg:grid lg:grid-cols-4 lg:grid-rows-6 gap-2">
                 <Suspense fallback={<div>loading...</div>}>
                   <HomepageEvents />
