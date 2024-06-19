@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-const theeventtime = addHours(new Date(), -6);
+const theeventtime = addHours(new Date(), 25);
 console.log(theeventtime);
 export default async function Home() {
   return (

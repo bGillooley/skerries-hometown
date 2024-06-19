@@ -27,6 +27,7 @@ export const foramtDbDateString = (
 };
 
 export const addHours = (date: Date, hours: number) => {
+  date.setHours(0, 0, 0);
   date.setTime(date.getTime() + hours * 60 * 60 * 1000);
 
   return date;
