@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import { MdArrowForwardIos } from "react-icons/md";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
 
 import clsx from "clsx";

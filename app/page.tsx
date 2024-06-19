@@ -6,7 +6,6 @@ import type { Metadata } from "next";
 import ShowTrains from "@/components/trains/show-trains";
 import ShowTides from "@/components/tides/show-tides";
 import ShowWeather from "@/components/weather/show-weather";
-import { addHours } from "@/lib/utils";
 import Link from "next/link";
 import { Suspense } from "react";
 import HomepageEvents from "@/components/events/homepage-events";
@@ -20,8 +19,6 @@ export const metadata: Metadata = {
   },
 };
 
-const theeventtime = addHours(new Date(), 25);
-console.log(theeventtime);
 export default async function Home() {
   return (
     <>
