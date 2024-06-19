@@ -3,6 +3,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdArrowForwardIos, MdAccessTime } from "react-icons/md";
+import {
+  MapPinIcon,
+  ArrowTopRightOnSquareIcon,
+  ArrowDownCircleIcon,
+} from "@heroicons/react/24/outline";
 import { Event } from "@/lib/defintions";
 import {
   formatDateDay,
@@ -67,8 +72,7 @@ export default function EventModule({ event }: { event: Event }) {
         onKeyUp={handleShowModalKeyUp}
         key={event.id}
         className="flex relative bg-white hover:bg-slate-50 drop-shadow border border-gray-100 rounded-md py-2 px-3 cursor-pointer"
-        tabIndex={0}
-      >
+        tabIndex={0}>
         <div className="flex flex-col pr-4">
           <div className="text-center uppercase">
             {formatDateMonth(event.eventDate.toString())}
@@ -96,16 +100,14 @@ export default function EventModule({ event }: { event: Event }) {
               onClick={handleHideModalClick}
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.75 }}
-              exit={{ opacity: 0 }}
-            ></motion.div>
+              exit={{ opacity: 0 }}></motion.div>
             <div className="flex md:w-screen md:h-screen md:items-center md:justify-center">
               <motion.div
-                className="relative w-full md:w-[740px] h-auto z-50 rounded-lg"
+                className="relative w-full md:w-4/6 h-auto z-50 rounded-lg"
                 initial={{ y: 500, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ ease: "easeOut", duration: 0.25 }}
-                exit={{ y: 500, opacity: 0 }}
-              >
+                exit={{ y: 500, opacity: 0 }}>
                 <div className="w-full pt-0  md:p-0 text-white">
                   <div className="bg-teal-700 rounded-t-lg p-4  md:mx-1">
                     <button
@@ -114,10 +116,9 @@ export default function EventModule({ event }: { event: Event }) {
                       onKeyUp={handleHideModalKeyUp}
                       aria-label="close"
                       tabIndex={0}
-                      autoFocus
-                    >
-                      <div className="rotate-90 mx-auto origin-center text-3xl text-slate-400 hover:text-slate-200">
-                        <MdArrowForwardIos />
+                      autoFocus>
+                      <div className="mx-auto origin-center text-3xl text-white hover:text-slate-50">
+                        <ArrowDownCircleIcon className="w-10" />
                       </div>
                       <div className="w-full text-slate-400 text-xs">close</div>
                     </button>
@@ -128,19 +129,35 @@ export default function EventModule({ event }: { event: Event }) {
                       {event.title}
                     </h2>
 
-                    <div className="text-xs flex font-semibold uppercase text-slate-300 tracking-wider">
+                    <div className="text-xs flex font-semibold items-center  uppercase text-slate-300 tracking-wider">
                       <div>{formatDateLong(event.eventDate.toString())}</div>
                       <div className="pl-2 pr-0.5 flex items-center">
                         <MdAccessTime />
                       </div>
-                      <div>{event.eventTime}</div>
+                      <div className="mr-2">{event.eventTime}</div>
+                      <add-to-calendar-button
+                        styleLight="--btn-background: #d7b881;--btn-hover-background: #c3933d; --btn-border:none; --btn-shadow:none; --btn-hover-shadow:none; --btn-active-shadow:none; --btn-text: #000; --btn-font-weight:500"
+                        styleDark="--btn-background: #d7b881;--btn-text: #000; --btn-font-weight:500"
+                        size="1"
+                        name={event.title}
+                        label="ADD TO CALENDAR"
+                        description={event.content!}
+                        startDate={calendarDate(event.eventDate.toString())}
+                        startTime={event.eventTime!}
+                        endTime={event.eventTime!}
+                        timeZone="Europe/Dublin"
+                        location={event.address}
+                        hideBackground
+                        trigger="click"
+                        lightMode="bodyScheme"
+                        options="'Apple','Google','iCal','Outlook.com'"></add-to-calendar-button>
                     </div>
                   </div>
                 </div>
                 <div className="relative flex flex-col  md:flex-row bg-white">
                   <div className="h-screen md:h-auto md:flex md:flex-col justify-between  md:flex-1">
-                    <div className="p-4">
-                      <div className="p-2 border-2 rounded-md">
+                    <div className="p-4 flex flex-grow">
+                      <div className="p-2 flex-grow border-2 rounded-md">
                         <div className="md:text-left md:pt-0 text-lg">
                           <div className="text-xs tracking-wider font-semibold text-slate-400">
                             VENUE
@@ -150,7 +167,12 @@ export default function EventModule({ event }: { event: Event }) {
                         <div className="md:text-left text-xs text-slate-400">
                           {event.address}
                         </div>
-
+                        <button
+                          className="inline-flex md:hidden mt-2 text-sm font-semibold mb-0 md:mb-4  justify-center cursor-pointer rounded-md border border-transparent bg-beach px-4 pr-5 py-2  shadow-sm items-center hover:bg-[#c3933d] focus:outline-none focus:ring-2 focus:ring-teal-900 focus:ring-offset-2"
+                          tabIndex={0}>
+                          <MapPinIcon className="w-5 mr-1" />
+                          VIEW MAP / GET DIRECTIONS
+                        </button>
                         <div className=" mt-4 mb-4 w-[50px] h-[4px] bg-sky-900"></div>
 
                         <div className="text-xs tracking-wider font-semibold text-slate-400">
@@ -161,24 +183,13 @@ export default function EventModule({ event }: { event: Event }) {
                         </div>
                         {event.linkUrl !== "" && (
                           <a
-                            className="inline-block cursor-pointer justify-center rounded-lg text-xs font-semibold mt-4 text-slate-700 py-2.5 px-4 bg-slate-100 hover:bg-slate-200"
+                            className="inline-flex w-auto mt-4 text-sm font-semibold mb-0 md:mb-4 w-full justify-center cursor-pointer rounded-md border border-transparent bg-beach px-4 pr-5 py-2 uppercase  shadow-sm items-center hover:bg-[#c3933d] focus:outline-none focus:ring-2 focus:ring-teal-900 focus:ring-offset-2"
                             href={(event.linkUrl = event.linkUrl || "")}
-                            target="_blank"
-                          >
+                            target="_blank">
+                            <ArrowTopRightOnSquareIcon className="w-5 mr-2" />
                             {event.linkDesc}
                           </a>
                         )}
-                        <add-to-calendar-button
-                          name={event.title}
-                          description={event.content!}
-                          startDate={calendarDate(event.eventDate.toString())}
-                          startTime={event.eventTime!}
-                          endTime={event.eventTime!}
-                          timeZone="Europe/Dublin"
-                          location={event.address}
-                          options="'Apple','Google','iCal','Outlook.com'"
-                          buttonStyle="text"
-                        ></add-to-calendar-button>
                       </div>
                     </div>
                   </div>
@@ -193,23 +204,23 @@ export default function EventModule({ event }: { event: Event }) {
                         height={350}
                       />
                       <form
-                        className="md:absolute bottom-0 right-4"
+                        className="hidden md:block md:absolute bottom-0 right-4"
                         action="https://maps.google.com/maps"
                         method="get"
-                        target="_blank"
-                      >
+                        target="_blank">
                         <input type="hidden" name="Your location" />
                         <input
                           type="hidden"
                           name="daddr"
                           value={event.address}
                         />
-                        <input
-                          className="inline-flex text-xs font-semibold mb-0 md:mb-4 w-full justify-center cursor-pointer rounded-md border border-transparent bg-slate-800 px-4 py-2 text-white shadow-sm hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:w-auto sm:text-xs"
-                          type="submit"
-                          value="View Map / Get directions"
-                          tabIndex={0}
-                        />
+
+                        <button
+                          className="inline-flex text-sm font-semibold mb-0 md:mb-4 w-full justify-center cursor-pointer rounded-md border border-transparent bg-beach px-4 pr-5 py-2  shadow-sm items-center hover:bg-[#c3933d] focus:outline-none focus:ring-2 focus:ring-teal-900 focus:ring-offset-2"
+                          tabIndex={0}>
+                          <MapPinIcon className="w-5 mr-1" />
+                          VIEW MAP / GET DIRECTIONS
+                        </button>
                       </form>
                     </div>
                   </div>
