@@ -192,7 +192,7 @@ export default async function page({ params }: { params: { slug: string } }) {
                             href="/events/sport"
                             title="View all events filtered by sport"
                             className={clsx("text-slate-400 block py-2", {
-                              "text-teal-400": params.slug === "sport",
+                              "text-teal-600": params.slug === "sport",
                             })}
                           >
                             Sport
