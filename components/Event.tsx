@@ -183,7 +183,7 @@ export default function EventModule({ event }: { event: Event }) {
                         </div>
                         {event.linkUrl !== "" && (
                           <a
-                            className="inline-flex w-auto mt-4 text-sm font-semibold mb-0 md:mb-4 w-full justify-center cursor-pointer rounded-md border border-transparent bg-beach px-4 pr-5 py-2 uppercase  shadow-sm items-center hover:bg-[#c3933d] focus:outline-none focus:ring-2 focus:ring-teal-900 focus:ring-offset-2"
+                            className="inline-flex w-auto mt-4 text-sm font-semibold mb-0 md:mb-4  justify-center cursor-pointer rounded-md border border-transparent bg-beach px-4 pr-5 py-2 uppercase  shadow-sm items-center hover:bg-[#c3933d] focus:outline-none focus:ring-2 focus:ring-teal-900 focus:ring-offset-2"
                             href={(event.linkUrl = event.linkUrl || "")}
                             target="_blank">
                             <ArrowTopRightOnSquareIcon className="w-5 mr-2" />
