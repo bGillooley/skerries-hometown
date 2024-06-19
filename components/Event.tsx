@@ -133,12 +133,15 @@ export default function EventModule({ event }: { event: Event }) {
                       {event.title}
                     </h2>
 
-                    <div className="text-xs flex font-semibold items-center  uppercase text-slate-300 tracking-wider">
-                      <div>{formatDateLong(event.eventDate.toString())}</div>
-                      <div className="pl-2 pr-0.5 flex items-center">
-                        <MdAccessTime />
+                    <div className="text-xs flex flex-col md:flex-row md:items-center font-semibold  uppercase text-slate-300 tracking-wider">
+                      <div className="flex mb-2">
+                        <div>{formatDateLong(event.eventDate.toString())}</div>
+                        <div className="pl-2 pr-0.5 flex items-center">
+                          <MdAccessTime />
+                        </div>
+
+                        <div className="mr-2">{event.eventTime}</div>
                       </div>
-                      <div className="mr-2">{event.eventTime}</div>
                       <add-to-calendar-button
                         styleLight="--btn-background: #d7b881;--btn-hover-background: #c3933d; --btn-border:none; --btn-shadow:none; --btn-hover-shadow:none; --btn-active-shadow:none; --btn-text: #000; --btn-font-weight:500"
                         styleDark="--btn-background: #d7b881;--btn-text: #000; --btn-font-weight:500"
