@@ -2,6 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { MdArrowForwardIos } from "react-icons/md";
 import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Skerries Hometown App - Events",
+  description: "Skerries Community App",
+  robots: {
+    follow: false,
+    index: false,
+  },
+};
 
 import clsx from "clsx";
 import { Suspense } from "react";
