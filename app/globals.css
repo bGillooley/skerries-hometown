@@ -24,6 +24,13 @@ body {
   font-weight: 900;
 }
 
+.bg-beach {
+  background-color: #d7b881;
+}
+.bg-beach-darker {
+  background-color: #c3933d;
+}
+
 /* TIDE COMPONENT */
 
 .tidal-state {

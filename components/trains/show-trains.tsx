@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { MdTrain } from "react-icons/md";
-import Trains from "./Trains";
+import dynamic from "next/dynamic";
+const DynamicTrains = dynamic(() => import("./Trains"));
 export default function ShowTrains() {
   const [showTrains, setShowTrains] = useState(false);
   return (
@@ -22,7 +23,9 @@ export default function ShowTrains() {
           TRAIN TIMES
         </div>
       </div>
-      <Trains showTrains={showTrains} setShowTrains={setShowTrains} />
+      {showTrains && (
+        <DynamicTrains showTrains={showTrains} setShowTrains={setShowTrains} />
+      )}
     </>
   );
 }

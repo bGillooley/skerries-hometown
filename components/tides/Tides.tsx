@@ -61,7 +61,7 @@ const Tides = ({
                 animate={{ opacity: 0.75 }}
                 exit={{ opacity: 0 }}
               ></motion.div>
-              <div className="w-full h-full  text-white flex justify-center items-center">
+              <div className="fixed z-50 w-full h-full  text-white flex justify-center items-center">
                 <div className="relative z-20 text-3xl">Loading...</div>
               </div>
             </div>

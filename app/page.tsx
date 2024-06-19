@@ -3,8 +3,6 @@ import themeImg2 from "../public/skez-drone.jpg";
 import themeImg3 from "../public/skez-night.jpg";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { MdWaves, MdTrain } from "react-icons/md";
-import { TiWeatherPartlySunny } from "react-icons/ti";
 import ShowTrains from "@/components/trains/show-trains";
 import ShowTides from "@/components/tides/show-tides";
 import ShowWeather from "@/components/weather/show-weather";
@@ -74,7 +72,9 @@ export default async function Home() {
               </p>
             </div>
             <div className="w-full lg:w-2/3">
-              <h2 className="text-slate-100 text-4xl pb-3">What's On</h2>
+              <h2 className="text-slate-100 text-4xl pb-3 font-alegreya">
+                What's On
+              </h2>
               <div className="lg:grid lg:grid-cols-4 lg:grid-rows-6 gap-2">
                 <Suspense fallback={<div>loading...</div>}>
                   <HomepageEvents />
@@ -82,7 +82,7 @@ export default async function Home() {
                 <div className="row-start-7">
                   <Link
                     href="/events/all"
-                    className="inline-flex mb-6 md:mb-0 w-full text-black md:w-auto cursor-pointer justify-center rounded-lg text-xs font-semibold py-2.5 px-4 bg-orange-300 hover:bg-orange-400 tracking-wider"
+                    className="inline-block mb-6 md:mb-0 w-full md:w-auto cursor-pointer rounded-md text-center font-semibold py-2 px-3 bg-beach hover:bg-[#C3933D] tracking-wider"
                     title="View all events"
                     tabIndex={0}
                   >

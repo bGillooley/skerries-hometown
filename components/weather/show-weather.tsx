@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { TiWeatherPartlySunny } from "react-icons/ti";
-import Weather from "../Weather";
+import dynamic from "next/dynamic";
+const DynamicWeather = dynamic(() => import("./Weather"));
 export default function ShowWeather() {
   const [showWeather, setShowWeather] = useState(false);
   return (
@@ -24,7 +25,12 @@ export default function ShowWeather() {
           WEATHER
         </div>
       </div>
-      <Weather showWeather={showWeather} setShowWeather={setShowWeather} />
+      {showWeather && (
+        <DynamicWeather
+          showWeather={showWeather}
+          setShowWeather={setShowWeather}
+        />
+      )}
     </>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { MdWaves } from "react-icons/md";
-import Tides from "./Tides";
+import dynamic from "next/dynamic";
+const DynamicTides = dynamic(() => import("./Tides"));
 export default function ShowTides() {
   const [showTides, setShowTides] = useState(false);
   return (
@@ -22,7 +23,9 @@ export default function ShowTides() {
           TIDE TIMES
         </div>
       </div>
-      <Tides showTides={showTides} setShowTides={setShowTides} />
+      {showTides && (
+        <DynamicTides showTides={showTides} setShowTides={setShowTides} />
+      )}
     </>
   );
 }

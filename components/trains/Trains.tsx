@@ -21,7 +21,6 @@ const Trains = ({
       .then((res) => res.json())
       .then((data) => {
         JSON.stringify(data.details1);
-        console.log("This is...", data);
         setNorthBoundTrains(data.details1);
 
         setLoading(false);
@@ -54,8 +53,8 @@ const Trains = ({
               animate={{ opacity: 0.75 }}
               exit={{ opacity: 0 }}
             ></motion.div>
-            <div className="fixed w-full h-full  text-white flex justify-center items-center">
-              <div className="relative z-20 text-3xl">Loading...</div>
+            <div className="fixed z-50 w-full h-full  text-white flex justify-center items-center">
+              <div className="relative text-3xl">Loading...</div>
             </div>
           </div>
         )}
