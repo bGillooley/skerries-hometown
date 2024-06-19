@@ -23,7 +23,7 @@ export async function fetchHomepageEvents() {
       where: {
         published: true,
         eventDate: {
-          gte: addHours(new Date(), 20),
+          gte: addHours(new Date(), 25),
         },
       },
       orderBy: {
