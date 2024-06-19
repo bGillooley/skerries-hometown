@@ -82,7 +82,7 @@ export default async function Home() {
                 <div className="row-start-7">
                   <Link
                     href="/events/all"
-                    className="inline-block mb-6 md:mb-0 w-full md:w-auto cursor-pointer rounded-md text-center font-semibold py-2 px-3 bg-beach hover:bg-[#C3933D] tracking-wider"
+                    className="inline-block mb-6 w-full xl:w-auto cursor-pointer rounded-md text-center font-semibold py-2 px-3 bg-beach hover:bg-[#C3933D]"
                     title="View all events"
                     tabIndex={0}
                   >

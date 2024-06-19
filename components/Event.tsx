@@ -72,7 +72,8 @@ export default function EventModule({ event }: { event: Event }) {
         onKeyUp={handleShowModalKeyUp}
         key={event.id}
         className="flex relative bg-white hover:bg-slate-50 drop-shadow border border-gray-100 rounded-md py-2 px-3 cursor-pointer"
-        tabIndex={0}>
+        tabIndex={0}
+      >
         <div className="flex flex-col pr-4">
           <div className="text-center uppercase">
             {formatDateMonth(event.eventDate.toString())}
@@ -100,14 +101,16 @@ export default function EventModule({ event }: { event: Event }) {
               onClick={handleHideModalClick}
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.75 }}
-              exit={{ opacity: 0 }}></motion.div>
+              exit={{ opacity: 0 }}
+            ></motion.div>
             <div className="flex md:w-screen md:h-screen md:items-center md:justify-center">
               <motion.div
-                className="relative w-full md:w-4/6 h-auto z-50 rounded-lg"
+                className="relative w-full md:w-[820px] h-auto z-50 rounded-lg"
                 initial={{ y: 500, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ ease: "easeOut", duration: 0.25 }}
-                exit={{ y: 500, opacity: 0 }}>
+                exit={{ y: 500, opacity: 0 }}
+              >
                 <div className="w-full pt-0  md:p-0 text-white">
                   <div className="bg-teal-700 rounded-t-lg p-4  md:mx-1">
                     <button
@@ -116,7 +119,8 @@ export default function EventModule({ event }: { event: Event }) {
                       onKeyUp={handleHideModalKeyUp}
                       aria-label="close"
                       tabIndex={0}
-                      autoFocus>
+                      autoFocus
+                    >
                       <div className="mx-auto origin-center text-3xl text-white hover:text-slate-50">
                         <ArrowDownCircleIcon className="w-10" />
                       </div>
@@ -150,14 +154,15 @@ export default function EventModule({ event }: { event: Event }) {
                         hideBackground
                         trigger="click"
                         lightMode="bodyScheme"
-                        options="'Apple','Google','iCal','Outlook.com'"></add-to-calendar-button>
+                        options="'Apple','Google','iCal','Outlook.com'"
+                      ></add-to-calendar-button>
                     </div>
                   </div>
                 </div>
                 <div className="relative flex flex-col  md:flex-row bg-white">
                   <div className="h-screen md:h-auto md:flex md:flex-col justify-between  md:flex-1">
                     <div className="p-4 flex flex-grow">
-                      <div className="p-2 flex-grow border-2 rounded-md">
+                      <div className="p-2 flex-grow border-3 subpixel-antialiased rounded-md">
                         <div className="md:text-left md:pt-0 text-lg">
                           <div className="text-xs tracking-wider font-semibold text-slate-400">
                             VENUE
@@ -169,7 +174,8 @@ export default function EventModule({ event }: { event: Event }) {
                         </div>
                         <button
                           className="inline-flex md:hidden mt-2 text-sm font-semibold mb-0 md:mb-4  justify-center cursor-pointer rounded-md border border-transparent bg-beach px-4 pr-5 py-2  shadow-sm items-center hover:bg-[#c3933d] focus:outline-none focus:ring-2 focus:ring-teal-900 focus:ring-offset-2"
-                          tabIndex={0}>
+                          tabIndex={0}
+                        >
                           <MapPinIcon className="w-5 mr-1" />
                           VIEW MAP / GET DIRECTIONS
                         </button>
@@ -178,14 +184,15 @@ export default function EventModule({ event }: { event: Event }) {
                         <div className="text-xs tracking-wider font-semibold text-slate-400">
                           DESCRIPTION
                         </div>
-                        <div className="text-left  md:text-left md:px-0 text-base h-36 overflow-auto pt-1 text-slate-500">
+                        <div className="text-left border-2 rounded-sm  md:text-left md:px-0 text-sm  h-36 overflow-auto p-2 text-slate-500">
                           {event.content}
                         </div>
                         {event.linkUrl !== "" && (
                           <a
                             className="inline-flex w-auto mt-4 text-sm font-semibold mb-0 md:mb-4  justify-center cursor-pointer rounded-md border border-transparent bg-beach px-4 pr-5 py-2 uppercase  shadow-sm items-center hover:bg-[#c3933d] focus:outline-none focus:ring-2 focus:ring-teal-900 focus:ring-offset-2"
                             href={(event.linkUrl = event.linkUrl || "")}
-                            target="_blank">
+                            target="_blank"
+                          >
                             <ArrowTopRightOnSquareIcon className="w-5 mr-2" />
                             {event.linkDesc}
                           </a>
@@ -207,7 +214,8 @@ export default function EventModule({ event }: { event: Event }) {
                         className="hidden md:block md:absolute bottom-0 right-4"
                         action="https://maps.google.com/maps"
                         method="get"
-                        target="_blank">
+                        target="_blank"
+                      >
                         <input type="hidden" name="Your location" />
                         <input
                           type="hidden"
@@ -217,7 +225,8 @@ export default function EventModule({ event }: { event: Event }) {
 
                         <button
                           className="inline-flex text-sm font-semibold mb-0 md:mb-4 w-full justify-center cursor-pointer rounded-md border border-transparent bg-beach px-4 pr-5 py-2  shadow-sm items-center hover:bg-[#c3933d] focus:outline-none focus:ring-2 focus:ring-teal-900 focus:ring-offset-2"
-                          tabIndex={0}>
+                          tabIndex={0}
+                        >
                           <MapPinIcon className="w-5 mr-1" />
                           VIEW MAP / GET DIRECTIONS
                         </button>
