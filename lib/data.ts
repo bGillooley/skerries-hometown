@@ -23,7 +23,7 @@ export async function fetchHomepageEvents() {
       where: {
         published: true,
         eventDate: {
-          gte: addHours(new Date(), 0),
+          gte: new Date().toISOString(),
         },
       },
       orderBy: {
@@ -45,7 +45,7 @@ export async function fetchFilteredEvents(category: string) {
         where: {
           published: true,
           eventDate: {
-            gte: new Date().setHours(0, 0, 0).toString(),
+            gte: new Date().toISOString(),
           },
         },
         orderBy: {
@@ -65,7 +65,7 @@ export async function fetchFilteredEvents(category: string) {
           published: true,
           category: category,
           eventDate: {
-            gte: addHours(new Date(), 0),
+            gte: new Date().toISOString(),
           },
         },
         orderBy: {
