@@ -260,3 +260,18 @@ export async function unPublishEvent(id: string) {
     return { message: "Database Error: Failed to publish evemt." };
   }
 }
+
+export async function clearCache() {
+  try {
+    revalidatePath("/dashboard");
+    revalidatePath("/");
+    revalidatePath("/events/all");
+    revalidatePath("/events/culture");
+    revalidatePath("/events/music");
+    revalidatePath("/events/culture");
+    revalidatePath("/events/sport");
+    return { message: "Yay, it worked!" };
+  } catch (error) {
+    return { message: "Boo! It didn't work..." };
+  }
+}

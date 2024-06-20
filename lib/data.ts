@@ -1,5 +1,4 @@
 import prisma from "./prisma";
-import { addHours } from "./utils";
 
 export async function fetchEventById(id: string) {
   try {
