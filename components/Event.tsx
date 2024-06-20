@@ -175,13 +175,27 @@ export default function EventModule({ event }: { event: Event }) {
                         <div className="md:text-left text-xs text-slate-400">
                           {event.address}
                         </div>
-                        <button
-                          className="inline-flex md:hidden mt-2 text-sm font-semibold mb-0 md:mb-4  justify-center cursor-pointer rounded-md border border-transparent bg-beach px-4 pr-5 py-2  shadow-sm items-center hover:bg-[#c3933d] focus:outline-none focus:ring-2 focus:ring-teal-900 focus:ring-offset-2"
-                          tabIndex={0}
+                        <form
+                          className="block md:hidden mt-2"
+                          action="https://maps.google.com/maps"
+                          method="get"
+                          target="_blank"
                         >
-                          <MapPinIcon className="w-5 mr-1" />
-                          VIEW MAP / GET DIRECTIONS
-                        </button>
+                          <input type="hidden" name="Your location" />
+                          <input
+                            type="hidden"
+                            name="daddr"
+                            value={event.address}
+                          />
+
+                          <button
+                            className="inline-flex text-sm font-semibold mb-0 md:mb-4 w-full justify-center cursor-pointer rounded-md border border-transparent bg-beach px-4 pr-5 py-2  shadow-sm items-center hover:bg-[#c3933d] focus:outline-none focus:ring-2 focus:ring-teal-900 focus:ring-offset-2"
+                            tabIndex={0}
+                          >
+                            <MapPinIcon className="w-5 mr-1" />
+                            VIEW MAP / GET DIRECTIONS
+                          </button>
+                        </form>
                         <div className=" mt-4 mb-4 w-[50px] h-[4px] bg-sky-900"></div>
 
                         <div className="text-xs tracking-wider mb-2 font-semibold text-slate-400">
