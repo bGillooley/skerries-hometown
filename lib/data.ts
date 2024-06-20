@@ -23,7 +23,7 @@ export async function fetchHomepageEvents() {
       where: {
         published: true,
         eventDate: {
-          gte: new Date().toISOString(),
+          gte: new Date(),
         },
       },
       orderBy: {
