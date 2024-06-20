@@ -22,6 +22,9 @@ export async function fetchHomepageEvents() {
       take: 6,
       where: {
         published: true,
+        eventDate: {
+          gte: new Date(0),
+        },
       },
       orderBy: {
         eventDate: "asc",
@@ -42,7 +45,7 @@ export async function fetchFilteredEvents(category: string) {
         where: {
           published: true,
           eventDate: {
-            gte: new Date().toISOString(),
+            gte: new Date(0),
           },
         },
         orderBy: {
