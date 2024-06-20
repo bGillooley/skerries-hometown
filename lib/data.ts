@@ -64,7 +64,7 @@ export async function fetchFilteredEvents(category: string) {
           published: true,
           category: category,
           eventDate: {
-            gte: new Date().toISOString(),
+            gte: new Date(0),
           },
         },
         orderBy: {

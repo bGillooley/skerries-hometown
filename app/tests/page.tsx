@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     index: false,
   },
 };
-export default function page() {
+export default async function page() {
   return (
     <div>
       <form action={clearCache}>
