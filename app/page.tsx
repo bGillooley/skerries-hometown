@@ -72,7 +72,11 @@ export default async function Home() {
             </div>
             <div className="w-full lg:w-2/3">
               <div className="lg:grid lg:grid-cols-4 lg:grid-rows-6 gap-2">
-                <Suspense fallback={<div>loading...</div>}>
+                <Suspense
+                  fallback={
+                    <div className="text-md text-white">loading...</div>
+                  }
+                >
                   <HomepageEvents />
                 </Suspense>
                 <div className="row-start-7">

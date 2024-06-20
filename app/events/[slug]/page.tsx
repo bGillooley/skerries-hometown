@@ -221,7 +221,9 @@ export default async function page({ params }: { params: { slug: string } }) {
                 </div>
               </nav>
               <main className="grow">
-                <Suspense fallback={<div>Loading</div>}>
+                <Suspense
+                  fallback={<div className="text-md text-white">Loading</div>}
+                >
                   <EventsPageList category={params.slug} />
                 </Suspense>
               </main>
