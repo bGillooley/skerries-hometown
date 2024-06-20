@@ -20,9 +20,6 @@ export const metadata: Metadata = {
   },
 };
 
-const thisYoke = addHours(new Date(), 0).toISOString();
-const dater = new Date().toString();
-
 export default async function Home() {
   return (
     <>
@@ -53,9 +50,6 @@ export default async function Home() {
             <p className="text-teal-600 text-3xl text-center font-alegreya">
               Your Town, Your Events
             </p>
-            <span className="text-xs text-white">
-              {thisYoke} | {dater}
-            </span>
           </div>
         </div>
       </div>
