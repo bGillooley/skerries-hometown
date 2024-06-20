@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   },
 };
 
+const dater = new Date().toISOString();
+
 export default async function Home() {
   return (
     <>
@@ -50,6 +52,7 @@ export default async function Home() {
             <p className="text-teal-600 text-3xl text-center font-alegreya">
               Your Town, Your Events
             </p>
+            <span className="text-xs text-white">{dater}</span>
           </div>
         </div>
       </div>
