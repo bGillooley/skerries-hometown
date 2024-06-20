@@ -22,9 +22,6 @@ export async function fetchHomepageEvents() {
       take: 6,
       where: {
         published: true,
-        eventDate: {
-          gte: new Date(),
-        },
       },
       orderBy: {
         eventDate: "asc",
