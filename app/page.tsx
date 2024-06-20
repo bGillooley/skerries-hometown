@@ -54,7 +54,7 @@ export default async function Home() {
       </div>
       <main className="bg-black">
         <div className="relative flex flex-col 2xl:place-content-center lg:min-h-screen">
-          <div className="relative pt-12 pb-16 container mx-auto flex z-20 px-4">
+          <div className="relative pt-6 pb-16 container mx-auto flex z-20 px-4">
             <div className="hidden lg:flex w-1/3 flex-col items-center justify-center">
               <Image
                 src="/hometown-logo5.png"
@@ -82,7 +82,7 @@ export default async function Home() {
                 <div className="row-start-7">
                   <Link
                     href="/events/all"
-                    className="inline-block mb-6 w-full xl:w-auto cursor-pointer rounded-md text-center font-semibold py-2 px-3 bg-beach hover:bg-[#C3933D]"
+                    className="inline-block mb-6 md:mb-0 w-full xl:w-auto cursor-pointer rounded-md text-center font-semibold py-2 px-3 bg-beach hover:bg-[#C3933D]"
                     title="View all events"
                     tabIndex={0}
                   >

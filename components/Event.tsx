@@ -2,7 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { MdArrowForwardIos, MdAccessTime } from "react-icons/md";
+import { MdAccessTime } from "react-icons/md";
+import { isToday } from "@/lib/utils";
 import {
   MapPinIcon,
   ArrowTopRightOnSquareIcon,
@@ -18,6 +19,7 @@ import {
 } from "@/lib/date-formatting";
 
 import "add-to-calendar-button";
+
 const formatDate = (dateString: string) => {
   const timeformat = {
     month: "short",
@@ -85,7 +87,10 @@ export default function EventModule({ event }: { event: Event }) {
         <div className="grow">
           <div className="text-sm text-slate-500">
             <span className="font-bold capitalize ">{event.category}</span> -
-            {formatDateWeekDay(event.eventDate.toString())} - {event.eventTime}
+            {isToday(new Date(event.eventDate))
+              ? "Today"
+              : formatDateWeekDay(event.eventDate.toString())}
+            - {event.eventTime}
           </div>
           <div className="text-base text-teal-600 font-semibold">
             {event.title}

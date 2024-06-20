@@ -32,3 +32,13 @@ export const addHours = (date: Date, hours: number) => {
 
   return date;
 };
+
+export const isToday = (date: any) => {
+  const now = new Date();
+
+  return (
+    date.getDate() === now.getDate() &&
+    date.getMonth() === now.getMonth() &&
+    date.getFullYear() === now.getFullYear()
+  );
+};
