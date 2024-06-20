@@ -45,7 +45,7 @@ export async function fetchFilteredEvents(category: string) {
         where: {
           published: true,
           eventDate: {
-            gte: addHours(new Date(), 0),
+            gte: new Date().setHours(0, 0, 0).toString(),
           },
         },
         orderBy: {
