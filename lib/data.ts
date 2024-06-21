@@ -24,7 +24,7 @@ export async function fetchHomepageEvents() {
       where: {
         published: true,
         eventDate: {
-          gte: new Date(firstCall),
+          gte: new Date("2024-06-20"),
         },
       },
       orderBy: {
