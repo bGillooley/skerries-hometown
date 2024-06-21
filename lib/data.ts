@@ -1,6 +1,8 @@
 import prisma from "./prisma";
 
-const firstCall = new Date().setHours(0, 0, 0);
+let todaysDate = new Date();
+todaysDate.setDate(todaysDate.getDate() - 1);
+const yesterdaysDate = todaysDate.toLocaleDateString("en-IE");
 
 export async function fetchEventById(id: string) {
   try {
@@ -24,7 +26,7 @@ export async function fetchHomepageEvents() {
       where: {
         published: true,
         eventDate: {
-          gt: new Date("2024-06-20"),
+          gt: new Date(yesterdaysDate),
         },
       },
       orderBy: {
@@ -46,7 +48,7 @@ export async function fetchFilteredEvents(category: string) {
         where: {
           published: true,
           eventDate: {
-            gte: new Date(firstCall),
+            gte: new Date(yesterdaysDate),
           },
         },
         orderBy: {

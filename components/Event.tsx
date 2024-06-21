@@ -43,10 +43,11 @@ declare global {
 */
 }
 
-const firstCall = new Date();
-const secondCall = firstCall.setDate(firstCall.getDate() - 1);
+let todaysDate = new Date();
+todaysDate.setDate(todaysDate.getDate() - 1);
+const yesterdaysDate = todaysDate.toLocaleDateString("en-IE");
 
-console.log("Check this out...", new Date(secondCall));
+console.log("Check this out...", yesterdaysDate);
 
 export default function EventModule({ event }: { event: Event }) {
   const encodedAddress = encodeURIComponent(event.address);
