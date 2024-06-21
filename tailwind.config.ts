@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,7 +15,6 @@ const config: Config = {
     },
     fontFamily: {
       sans: ["var(--font-inter)"],
-      serif: ["var(--font-alegreya)"],
     },
   },
 
