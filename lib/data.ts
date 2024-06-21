@@ -1,8 +1,9 @@
 import prisma from "./prisma";
+import { foramtDbDateString } from "@/lib/utils";
 
 let todaysDate = new Date();
 todaysDate.setDate(todaysDate.getDate() - 1);
-const yesterdaysDate = todaysDate.toLocaleDateString("en-IE");
+const yesterdaysDate = foramtDbDateString(todaysDate.toString());
 
 export async function fetchEventById(id: string) {
   try {
