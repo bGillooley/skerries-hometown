@@ -43,6 +43,10 @@ declare global {
 */
 }
 
+const firstCall = new Date().setHours(0, 0, 0);
+
+console.log("Check this out...", new Date(firstCall));
+
 export default function EventModule({ event }: { event: Event }) {
   const encodedAddress = encodeURIComponent(event.address);
   const googleStaticMapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${encodedAddress}&zoom=16&markers=color:red|${encodedAddress}&size=400x400&key=${process.env.NEXT_PUBLIC_GOOGLE_STATIC_MAP_KEY}`;
