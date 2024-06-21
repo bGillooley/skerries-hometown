@@ -29,7 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${alegreya.variable}`}>
+    <html
+      lang="en"
+      className={`font-serif ${inter.variable} ${alegreya.variable}`}
+    >
       <body>{children}</body>
     </html>
   );

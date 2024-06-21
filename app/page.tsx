@@ -43,7 +43,8 @@ export default async function Home() {
               height={788}
               className=" px-12"
             />
-            <h1 className="text-7xl text-slate-100 text-center font-serif font-black">
+
+            <h1 className="text-7xl text-slate-100 text-center font-serif font-black ">
               Skerries
             </h1>
             <p className="text-teal-600 text-3xl text-center font-serif font-black">
