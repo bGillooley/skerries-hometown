@@ -43,9 +43,10 @@ declare global {
 */
 }
 
-const firstCall = new Date().setHours(0, 0, 0);
+const firstCall = new Date();
+const secondCall = firstCall.setDate(firstCall.getDate() - 1);
 
-console.log("Check this out...", new Date(firstCall));
+console.log("Check this out...", new Date(secondCall));
 
 export default function EventModule({ event }: { event: Event }) {
   const encodedAddress = encodeURIComponent(event.address);
