@@ -49,7 +49,7 @@ export async function fetchFilteredEvents(category: string) {
         where: {
           published: true,
           eventDate: {
-            gte: new Date(yesterdaysDate),
+            gt: new Date(yesterdaysDate),
           },
         },
         orderBy: {
@@ -69,7 +69,7 @@ export async function fetchFilteredEvents(category: string) {
           published: true,
           category: category,
           eventDate: {
-            gte: new Date(yesterdaysDate),
+            gt: new Date(yesterdaysDate),
           },
         },
         orderBy: {
