@@ -1,5 +1,7 @@
 import prisma from "./prisma";
 
+const firstCall = new Date().setHours(0, 0, 0);
+
 export async function fetchEventById(id: string) {
   try {
     const event = await prisma.event.findUnique({
@@ -22,7 +24,7 @@ export async function fetchHomepageEvents() {
       where: {
         published: true,
         eventDate: {
-          gte: new Date(0),
+          gte: new Date(firstCall),
         },
       },
       orderBy: {
@@ -44,7 +46,7 @@ export async function fetchFilteredEvents(category: string) {
         where: {
           published: true,
           eventDate: {
-            gte: new Date(0),
+            gte: new Date(firstCall),
           },
         },
         orderBy: {
@@ -64,7 +66,7 @@ export async function fetchFilteredEvents(category: string) {
           published: true,
           category: category,
           eventDate: {
-            gte: new Date(0),
+            gte: new Date(firstCall),
           },
         },
         orderBy: {
