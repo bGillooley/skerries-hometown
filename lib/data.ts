@@ -68,7 +68,7 @@ export async function fetchFilteredEvents(category: string) {
           published: true,
           category: category,
           eventDate: {
-            gte: new Date(firstCall),
+            gte: new Date(yesterdaysDate),
           },
         },
         orderBy: {
