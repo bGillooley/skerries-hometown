@@ -43,10 +43,10 @@ export default async function Home() {
               height={788}
               className=" px-12"
             />
-            <h1 className="text-7xl text-slate-100 text-center font-alegreya">
+            <h1 className="text-7xl text-slate-100 text-center font-serif font-black">
               Skerries
             </h1>
-            <p className="text-teal-600 text-3xl text-center font-alegreya">
+            <p className="text-teal-600 text-3xl text-center font-serif font-black">
               Your Town, Your Events
             </p>
           </div>
@@ -63,10 +63,10 @@ export default async function Home() {
                 height={788}
                 className=" px-12"
               />
-              <h1 className="text-6xl 2xl:text-8xl text-slate-100 font-alegreya text-center">
+              <h1 className="text-6xl 2xl:text-8xl text-slate-100 font-serif font-black text-center">
                 Skerries
               </h1>
-              <p className=" text-3xl font-alegreya text-teal-600 text-center">
+              <p className=" text-3xl font-serif font-black text-teal-600 text-center">
                 Your Town, Your Events
               </p>
             </div>
