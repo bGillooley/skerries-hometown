@@ -48,6 +48,8 @@ export default function EventModule({ event }: { event: Event }) {
     hour: "2-digit",
     minute: "2-digit",
   });
+  console.log("The Date...", event.eventDate);
+  console.log("The time...", eventDateTime);
   const encodedAddress = encodeURIComponent(event.address);
   const googleStaticMapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${encodedAddress}&zoom=16&markers=color:red|${encodedAddress}&size=400x400&key=${process.env.NEXT_PUBLIC_GOOGLE_STATIC_MAP_KEY}`;
   const [modalVisible, setModalVisible] = useState(false);
@@ -149,7 +151,10 @@ export default function EventModule({ event }: { event: Event }) {
                           <MdAccessTime />
                         </div>
 
-                        <div className="mr-2"> {eventDateTime}</div>
+                        <div className="mr-2" suppressHydrationWarning>
+                          {" "}
+                          {eventDateTime}
+                        </div>
                       </div>
                       <add-to-calendar-button
                         styleLight="--btn-background: #d7b881;--btn-hover-background: #c3933d; --btn-border:none; --btn-shadow:none; --btn-hover-shadow:none; --btn-active-shadow:none; --btn-text: #000; --btn-font-weight:500"
