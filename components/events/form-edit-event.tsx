@@ -3,11 +3,16 @@ import { updateEvent } from "@/lib/actions";
 import { EventForm } from "@/lib/defintions";
 import { useFormState } from "react-dom";
 import { useState } from "react";
-import { foramtDbDateString } from "@/lib/utils";
+
 export default function EventsEditForm({ event }: { event: EventForm }) {
-  const [theEventDate, setTheEventDate] = useState(
-    foramtDbDateString(event.eventDate)
-  );
+  let d = new Date(event.eventDate);
+  const dateTimeLocalValue = new Date(
+    d.getTime() - d.getTimezoneOffset() * 60000
+  )
+    .toISOString()
+    .slice(0, -5);
+
+  const [theEventDate, setTheEventDate] = useState(dateTimeLocalValue);
   const initialState = { message: null, errors: {} };
   const updateEventWithId = updateEvent.bind(null, event.id);
   const [state, dispatch] = useFormState(updateEventWithId, initialState);
@@ -107,28 +112,16 @@ export default function EventsEditForm({ event }: { event: EventForm }) {
             className="block w-full rounded-md border border-gray-200 py-2 px-2 text-sm outline-2 placeholder:text-gray-500"
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mt-4 mb-1">
-            Event Time
-          </label>
-          <input
-            id="eventTime"
-            name="eventTime"
-            placeholder="eg. 19:30"
-            type="text"
-            defaultValue={event.eventTime}
-            className="block w-full rounded-md border border-gray-200 py-2 px-2 text-sm outline-2 placeholder:text-gray-500"
-          />
-        </div>
+
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mt-4 mb-1">
             Event Date
           </label>
           <input
-            type="date"
+            type="datetime-local"
             id="eventDate"
             name="eventDate"
-            value={theEventDate}
+            defaultValue={theEventDate}
             onChange={(event) => {
               setTheEventDate(event.target.value);
             }}

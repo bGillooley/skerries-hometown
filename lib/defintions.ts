@@ -5,7 +5,6 @@ export type Event = {
   content: string | undefined | null;
   address: string;
   eventDate: Date;
-  eventTime: string | undefined | null;
   venue: string;
   linkUrl?: string | null;
   linkDesc?: string | null;
@@ -24,7 +23,6 @@ export type EventForm = {
   content: string;
   address: string;
   eventDate: string;
-  eventTime: string;
   venue: string;
   linkUrl?: string;
   linkDesc?: string;

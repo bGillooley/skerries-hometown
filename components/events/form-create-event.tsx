@@ -152,7 +152,7 @@ export default function EventsCreateForm() {
             Event Date
           </label>
           <input
-            type="date"
+            type="datetime-local"
             placeholder="Event Date"
             id="eventDate"
             name="eventDate"
@@ -168,27 +168,7 @@ export default function EventsCreateForm() {
               ))}
           </div>
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mt-4 mb-1">
-            Event Time
-          </label>
-          <input
-            id="eventTime"
-            name="eventTime"
-            placeholder="eg. 19:30"
-            type="text"
-            aria-describedby="eventTime-error"
-            className="block w-full rounded-md border border-gray-200 py-2 px-2 text-sm outline-2 placeholder:text-gray-500"
-          />
-          <div id="eventTime-error" aria-live="polite" aria-atomic="true">
-            {state.errors?.eventTime &&
-              state.errors.eventTime.map((error: string) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  {error}
-                </p>
-              ))}
-          </div>
-        </div>
+
         <div className="mb-4">
           <input
             type="submit"

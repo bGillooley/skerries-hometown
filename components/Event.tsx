@@ -85,12 +85,16 @@ export default function EventModule({ event }: { event: Event }) {
           </div>
         </div>
         <div className="grow">
-          <div className="text-sm text-slate-500">
+          <div className="text-sm text-slate-500" suppressHydrationWarning>
             <span className="font-bold capitalize ">{event.category}</span> -
             {isToday(new Date(event.eventDate))
               ? "Today"
               : formatDateWeekDay(event.eventDate.toString())}
-            - {event.eventTime}
+            -{" "}
+            {new Date(event.eventDate).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
           </div>
           <div className="text-base text-teal-600 font-semibold">
             {event.title}
@@ -145,7 +149,13 @@ export default function EventModule({ event }: { event: Event }) {
                           <MdAccessTime />
                         </div>
 
-                        <div className="mr-2">{event.eventTime}</div>
+                        <div className="mr-2">
+                          {" "}
+                          {new Date(event.eventDate).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </div>
                       </div>
                       <add-to-calendar-button
                         styleLight="--btn-background: #d7b881;--btn-hover-background: #c3933d; --btn-border:none; --btn-shadow:none; --btn-hover-shadow:none; --btn-active-shadow:none; --btn-text: #000; --btn-font-weight:500"
@@ -155,8 +165,20 @@ export default function EventModule({ event }: { event: Event }) {
                         label="ADD TO CALENDAR"
                         description={event.content!}
                         startDate={calendarDate(event.eventDate.toString())}
-                        startTime={event.eventTime!}
-                        endTime={event.eventTime!}
+                        startTime={new Date(event.eventDate).toLocaleTimeString(
+                          [],
+                          {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          }
+                        )}
+                        endTime={new Date(event.eventDate).toLocaleTimeString(
+                          [],
+                          {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          }
+                        )}
                         timeZone="Europe/Dublin"
                         location={event.address}
                         hideBackground

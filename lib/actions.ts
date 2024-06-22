@@ -17,7 +17,6 @@ export type State = {
     linkUrl?: string[];
     linkDesc?: string[];
     eventDate?: string[];
-    eventTime?: string[];
   };
   message?: string | null;
 };
@@ -36,7 +35,6 @@ const FormSchema = z.object({
   linkUrl: z.string().optional(),
   linkDesc: z.string().optional(),
   eventDate: z.string().min(1, { message: "Please enter the event date" }),
-  eventTime: z.string().min(1, { message: "Please enter the event time" }),
 });
 
 const CreateEventSchema = FormSchema.omit({ id: true });
@@ -64,8 +62,6 @@ export async function createEvent(
     description: formData.get("description"),
     linkUrl: formData.get("linkUrl"),
     linkDesc: formData.get("linkDesc"),
-    eventTime: formData.get("eventTime"),
-    eventDate: formData.get("eventDate"),
   });
   // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
@@ -84,7 +80,6 @@ export async function createEvent(
     linkUrl,
     linkDesc,
     eventDate,
-    eventTime,
   } = validatedFields.data;
 
   const dateTime = new Date(eventDate).toISOString();
@@ -97,7 +92,6 @@ export async function createEvent(
         venue: venue,
         linkUrl: linkUrl,
         linkDesc: linkDesc,
-        eventTime: eventTime,
         category: category,
         content: description,
         authorId: userDbId.id,
@@ -125,7 +119,6 @@ export async function updateEvent(
     description: formData.get("description"),
     linkUrl: formData.get("linkUrl"),
     linkDesc: formData.get("linkDesc"),
-    eventTime: formData.get("eventTime"),
     eventDate: formData.get("eventDate"),
   });
   // If form validation fails, return errors early. Otherwise, continue.
@@ -144,7 +137,6 @@ export async function updateEvent(
     linkUrl,
     linkDesc,
     eventDate,
-    eventTime,
   } = validatedFields.data;
 
   const dateTime = new Date(eventDate).toISOString();
@@ -160,7 +152,6 @@ export async function updateEvent(
         venue: venue,
         linkUrl: linkUrl,
         linkDesc: linkDesc,
-        eventTime: eventTime,
         category: category,
         content: description,
       },
@@ -192,7 +183,6 @@ export async function duplicateEvent(event: any) {
         venue: event.venue,
         linkUrl: event.linkUrl || "",
         linkDesc: event.linkDesc || "",
-        eventTime: event.eventTime,
         category: event.category,
         content: event.content,
         authorId: userDbId.id,
