@@ -16,5 +16,6 @@ export function GET(request: NextRequest) {
   revalidatePath("/events/culture");
   revalidatePath("/events/sport");
   revalidateTag("all-events");
+  revalidateTag("homepage-events");
   return Response.json({ success: true });
 }

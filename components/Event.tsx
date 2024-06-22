@@ -47,6 +47,7 @@ export default function EventModule({ event }: { event: Event }) {
   const eventDateTime = new Date(event.eventDate).toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
+    hour12: false,
   });
   console.log("The Date...", event.eventDate);
   console.log("The time...", eventDateTime);
