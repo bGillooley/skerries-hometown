@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import type { NextRequest } from "next/server";
 
 export function GET(request: NextRequest) {
@@ -15,5 +15,6 @@ export function GET(request: NextRequest) {
   revalidatePath("/events/music");
   revalidatePath("/events/culture");
   revalidatePath("/events/sport");
+  revalidateTag("all-events");
   return Response.json({ success: true });
 }
