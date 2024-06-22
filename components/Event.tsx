@@ -76,7 +76,7 @@ export default function EventModule({ event }: { event: Event }) {
         className="flex relative bg-white hover:bg-slate-50 drop-shadow border border-gray-100 rounded-md py-2 px-3 cursor-pointer"
         tabIndex={0}
       >
-        <div className="flex flex-col pr-4">
+        <div className="flex flex-col items-center justify-center pr-4">
           <div className="text-center uppercase">
             {formatDateMonth(event.eventDate.toString())}
           </div>

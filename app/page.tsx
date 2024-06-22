@@ -101,17 +101,17 @@ export default async function Home() {
                   </div>
                 </div>
                 <div className="mb-2 lg:mb-0 row-span-1 col-start-3 row-start-4">
-                  <Suspense fallback={<div>loading...</div>}>
+                  <Suspense fallback={<div>loading train times...</div>}>
                     <ShowTrains />
                   </Suspense>
                 </div>
                 <div className="mb-2 lg:mb-0 row-span-1 col-start-3 row-start-5">
-                  <Suspense fallback={<div>loading...</div>}>
+                  <Suspense fallback={<div>loading tide times...</div>}>
                     <ShowTides />
                   </Suspense>
                 </div>
                 <div className="mb-2 lg:mb-0 row-span-1 col-start-3 row-start-6">
-                  <Suspense fallback={<div>loading...</div>}>
+                  <Suspense fallback={<div>loading weather report...</div>}>
                     <ShowWeather />
                   </Suspense>
                 </div>
