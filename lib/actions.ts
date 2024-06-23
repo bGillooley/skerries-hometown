@@ -4,7 +4,6 @@ import { z } from "zod";
 import { auth } from "@/auth";
 import { User } from "./defintions";
 import { revalidatePath } from "next/cache";
-import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 export type State = {
@@ -103,7 +102,7 @@ export async function createEvent(
       message: "Database Error: Failed to create event",
     };
   }
-  revalidatePath("/dashboard");
+  revalidatePath("/", "layout");
   redirect("/dashboard");
 }
 
@@ -162,7 +161,7 @@ export async function updateEvent(
       message: "Database Error: Failed to create event",
     };
   }
-
+  revalidatePath("/", "layout");
   redirect("/dashboard");
 }
 
@@ -188,7 +187,7 @@ export async function duplicateEvent(event: any) {
         authorId: userDbId.id,
       },
     });
-    revalidatePath("/");
+    revalidatePath("/", "layout");
     return { message: "Duplicated event" };
   } catch (error) {
     return {
@@ -204,10 +203,7 @@ export async function deleteEvent(id: string) {
         id: id,
       },
     });
-    revalidateTag("homepage-events");
-    revalidateTag("all-events");
-    revalidatePath("/");
-    revalidatePath("/dashboard");
+    revalidatePath("/", "layout");
     return { message: "Deleted event" };
   } catch (error) {
     return { message: "Database Error: Failed to delete evemt." };
@@ -224,9 +220,7 @@ export async function publishEvent(id: string) {
         published: true,
       },
     });
-    revalidatePath("/");
-    revalidateTag("homepage-events");
-    revalidateTag("all-events");
+    revalidatePath("/", "layout");
     return { message: "Published event" };
   } catch (error) {
     return { message: "Database Error: Failed to publish evemt." };
@@ -243,9 +237,7 @@ export async function unPublishEvent(id: string) {
         published: false,
       },
     });
-    revalidatePath("/");
-    revalidateTag("homepage-events");
-    revalidateTag("all-events");
+    revalidatePath("/", "layout");
     return { message: "Published event" };
   } catch (error) {
     return { message: "Database Error: Failed to publish evemt." };
