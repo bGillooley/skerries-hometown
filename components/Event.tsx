@@ -177,7 +177,7 @@ export default function EventModule({ event }: { event: Event }) {
 
                         <div className="mr-2" suppressHydrationWarning>
                           {" "}
-                          {eventDateTime}
+                          {properTime}
                         </div>
                       </div>
                       <add-to-calendar-button
@@ -188,8 +188,8 @@ export default function EventModule({ event }: { event: Event }) {
                         label="ADD TO CALENDAR"
                         description={event.content!}
                         startDate={calendarDate(event.eventDate.toString())}
-                        startTime={eventDateTime}
-                        endTime={eventDateTime}
+                        startTime={properTime}
+                        endTime={properTime}
                         timeZone="Europe/Dublin"
                         location={event.address}
                         hideBackground
