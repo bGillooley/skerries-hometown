@@ -207,6 +207,7 @@ export async function deleteEvent(id: string) {
     revalidateTag("homepage-events");
     revalidateTag("all-events");
     revalidatePath("/");
+    revalidatePath("/dashboard");
     return { message: "Deleted event" };
   } catch (error) {
     return { message: "Database Error: Failed to delete evemt." };

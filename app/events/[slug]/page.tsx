@@ -5,7 +5,7 @@ import { ArrowLeftCircleIcon } from "@heroicons/react/24/outline";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Skerries Hometown App - Events",
+  title: "Skerries Hometown App - Browse Events",
   description: "Skerries Community App",
   robots: {
     follow: false,
