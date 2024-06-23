@@ -1,10 +1,6 @@
 import prisma from "./prisma";
 import { foramtDbDateString } from "@/lib/utils";
 
-let todaysDate = new Date();
-todaysDate.setDate(todaysDate.getDate() - 1);
-const yesterdaysDate = foramtDbDateString(todaysDate.toString());
-
 export async function fetchEventById(id: string) {
   try {
     const event = await prisma.event.findUnique({
@@ -27,7 +23,7 @@ export async function fetchHomepageEvents() {
       where: {
         published: true,
         eventDate: {
-          gt: new Date(yesterdaysDate),
+          gt: new Date(),
         },
       },
       orderBy: {
@@ -49,7 +45,7 @@ export async function fetchFilteredEvents(category: string) {
         where: {
           published: true,
           eventDate: {
-            gt: new Date(yesterdaysDate),
+            gt: new Date(),
           },
         },
         orderBy: {
@@ -69,7 +65,7 @@ export async function fetchFilteredEvents(category: string) {
           published: true,
           category: category,
           eventDate: {
-            gt: new Date(yesterdaysDate),
+            gt: new Date(),
           },
         },
         orderBy: {

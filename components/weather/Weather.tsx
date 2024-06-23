@@ -107,7 +107,6 @@ const Weather = ({
       const current = await getWeatherData("current");
       setWeatherData(results as any);
       setCurrentWeather(current);
-      console.log("Current weather....", current);
       setLoading(false);
     };
     fetchWeather();

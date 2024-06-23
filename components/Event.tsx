@@ -49,8 +49,7 @@ export default function EventModule({ event }: { event: Event }) {
     minute: "2-digit",
     hour12: false,
   });
-  console.log("The Date...", event.eventDate);
-  console.log("The time...", eventDateTime);
+
   const encodedAddress = encodeURIComponent(event.address);
   const googleStaticMapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${encodedAddress}&zoom=16&markers=color:red|${encodedAddress}&size=400x400&key=${process.env.NEXT_PUBLIC_GOOGLE_STATIC_MAP_KEY}`;
   const [modalVisible, setModalVisible] = useState(false);

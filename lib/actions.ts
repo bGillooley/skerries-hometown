@@ -62,6 +62,7 @@ export async function createEvent(
     description: formData.get("description"),
     linkUrl: formData.get("linkUrl"),
     linkDesc: formData.get("linkDesc"),
+    eventDate: formData.get("eventDate"),
   });
   // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
@@ -168,7 +169,6 @@ export async function updateEvent(
 export async function duplicateEvent(event: any) {
   const session = await auth();
   const user = session?.user?.email;
-  console.log(event);
   const userDbId = (await prisma.user.findUnique({
     where: {
       email: user || undefined,
