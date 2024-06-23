@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { MdAccessTime } from "react-icons/md";
 import { isToday } from "@/lib/utils";
 import {
@@ -49,10 +50,31 @@ export default function EventModule({ event }: { event: Event }) {
     minute: "2-digit",
     hour12: false,
   });
+  const pathname = usePathname();
 
   const encodedAddress = encodeURIComponent(event.address);
   const googleStaticMapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${encodedAddress}&zoom=16&markers=color:red|${encodedAddress}&size=400x400&key=${process.env.NEXT_PUBLIC_GOOGLE_STATIC_MAP_KEY}`;
   const [modalVisible, setModalVisible] = useState(false);
+
+  const handdlePopState = () => {
+    setModalVisible(false);
+    window.history.replaceState({}, "", pathname);
+  };
+
+  useEffect(() => {
+    if (!modalVisible) {
+      console.log("nothing there");
+      return;
+    } else {
+      console.log("Look, it works");
+      window.history.pushState({ modalVisible: true }, "Some Title");
+      window.addEventListener("popstate", handdlePopState);
+      return () => {
+        console.log("MITCH");
+        window.removeEventListener("popstate", handdlePopState);
+      };
+    }
+  }, [modalVisible]);
 
   const handleShowModalClick = (e: any) => {
     e.preventDefault();
