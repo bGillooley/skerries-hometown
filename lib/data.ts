@@ -45,7 +45,7 @@ export async function fetchFilteredEvents(category: string) {
         where: {
           published: true,
           eventDate: {
-            gt: new Date(),
+            gt: addHours(new Date(), +8),
           },
         },
         orderBy: {
@@ -65,7 +65,7 @@ export async function fetchFilteredEvents(category: string) {
           published: true,
           category: category,
           eventDate: {
-            gt: new Date(),
+            gt: addHours(new Date(), +8),
           },
         },
         orderBy: {
