@@ -82,7 +82,13 @@ export async function createEvent(
     eventDate,
   } = validatedFields.data;
 
-  const dateTime = new Date(eventDate).toISOString();
+  const rawDateTime = new Date(eventDate.toString());
+  rawDateTime.setMinutes(
+    rawDateTime.getMinutes() - rawDateTime.getTimezoneOffset()
+  );
+
+  const dateTime = rawDateTime;
+
   try {
     await prisma.event.create({
       data: {
@@ -139,7 +145,13 @@ export async function updateEvent(
     eventDate,
   } = validatedFields.data;
 
-  const dateTime = new Date(eventDate).toISOString();
+  const rawDateTime = new Date(eventDate.toString());
+  rawDateTime.setMinutes(
+    rawDateTime.getMinutes() - rawDateTime.getTimezoneOffset()
+  );
+
+  const dateTime = rawDateTime;
+
   try {
     await prisma.event.update({
       where: {
