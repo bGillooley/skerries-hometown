@@ -45,13 +45,14 @@ declare global {
 }
 
 export default function EventModule({ event }: { event: Event }) {
+  const rawDate = new Date(event.eventDate);
   const eventDateTime = new Date(event.eventDate).toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
   });
   const pathname = usePathname();
-
+  console.log("Event time:", event.title, eventDateTime);
   const encodedAddress = encodeURIComponent(event.address);
   const googleStaticMapURL = `https://maps.googleapis.com/maps/api/staticmap?center=${encodedAddress}&zoom=16&markers=color:red|${encodedAddress}&size=400x400&key=${process.env.NEXT_PUBLIC_GOOGLE_STATIC_MAP_KEY}`;
   const [modalVisible, setModalVisible] = useState(false);
