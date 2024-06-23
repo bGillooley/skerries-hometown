@@ -1,6 +1,6 @@
 import prisma from "./prisma";
 import { foramtDbDateString } from "@/lib/utils";
-
+import { addHours } from "@/lib/utils";
 export async function fetchEventById(id: string) {
   try {
     const event = await prisma.event.findUnique({
@@ -23,7 +23,7 @@ export async function fetchHomepageEvents() {
       where: {
         published: true,
         eventDate: {
-          gt: new Date(),
+          gt: addHours(new Date(), +8),
         },
       },
       orderBy: {
