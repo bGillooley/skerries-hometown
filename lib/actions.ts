@@ -188,7 +188,7 @@ export async function duplicateEvent(event: any) {
         authorId: userDbId.id,
       },
     });
-    revalidatePath("/dashboard");
+    revalidatePath("/");
     return { message: "Duplicated event" };
   } catch (error) {
     return {
@@ -206,7 +206,7 @@ export async function deleteEvent(id: string) {
     });
     revalidateTag("homepage-events");
     revalidateTag("all-events");
-    revalidatePath("/dashboard");
+    revalidatePath("/");
     return { message: "Deleted event" };
   } catch (error) {
     return { message: "Database Error: Failed to delete evemt." };
@@ -223,7 +223,7 @@ export async function publishEvent(id: string) {
         published: true,
       },
     });
-    revalidatePath("/dashboard");
+    revalidatePath("/");
     revalidateTag("homepage-events");
     revalidateTag("all-events");
     return { message: "Published event" };
@@ -242,7 +242,7 @@ export async function unPublishEvent(id: string) {
         published: false,
       },
     });
-    revalidatePath("/dashboard");
+    revalidatePath("/");
     revalidateTag("homepage-events");
     revalidateTag("all-events");
     return { message: "Published event" };
@@ -253,7 +253,6 @@ export async function unPublishEvent(id: string) {
 
 export async function clearCache() {
   try {
-    revalidatePath("/dashboard");
     revalidatePath("/");
     revalidatePath("/events/all");
     revalidatePath("/events/culture");
