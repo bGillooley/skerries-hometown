@@ -52,9 +52,10 @@ const Trains = ({
               className="fixed w-full h-full bg-black opacity-50 z-10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.75 }}
-              exit={{ opacity: 0 }}></motion.div>
+              exit={{ opacity: 0 }}
+            ></motion.div>
             <div className="fixed z-50 w-full h-full  text-white flex justify-center items-center">
-              <div className="relative text-3xl">Loading...</div>
+              <div className="relative text-3xl">Loading Train times...</div>
             </div>
           </div>
         )}
@@ -72,14 +73,16 @@ const Trains = ({
               onClick={() => setShowTrains(false)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.75 }}
-              exit={{ opacity: 0 }}></motion.div>
+              exit={{ opacity: 0 }}
+            ></motion.div>
             <div className="relative md:flex pointer-events-none md:w-screen md:h-screen md:items-center md:justify-center z-50">
               <motion.div
                 className="w-full md:w-[520px] h-auto pointer-events-auto"
                 initial={{ y: 500, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ ease: "easeOut", duration: 0.25 }}
-                exit={{ y: 500, opacity: 0 }}>
+                exit={{ y: 500, opacity: 0 }}
+              >
                 <div className="w-full pt-0  md:p-0 text-white">
                   <div className="relative bg-teal-700 rounded-t-lg p-4 pt-6 md:mx-1">
                     <button
@@ -88,7 +91,8 @@ const Trains = ({
                       onKeyUp={handleHideTrainsKeyUp}
                       aria-label="close"
                       tabIndex={0}
-                      autoFocus>
+                      autoFocus
+                    >
                       <div className="rotate-90 mx-auto origin-center text-3xl text-slate-300">
                         <MdArrowForwardIos />
                       </div>
@@ -137,7 +141,8 @@ const Trains = ({
                               return (
                                 <tr
                                   className="odd:bg-slate-100 even:bg-white"
-                                  key={uuidv4()}>
+                                  key={uuidv4()}
+                                >
                                   <td className="relative text-left p-1">
                                     <div>{e.destination}</div>
                                     {e.info !== "" && (
@@ -161,13 +166,15 @@ const Trains = ({
                 <div className="py-4 pb-96 md:pb-4 text-center bg-slate-100 border-t-2 border-slate-300">
                   <button
                     className="inline-flex cursor-pointer justify-center rounded-lg text-xs font-semibold py-2.5 px-4 bg-slate-900 text-white hover:bg-slate-700"
-                    onClick={getTrains}>
+                    onClick={getTrains}
+                  >
                     Refresh Data
                   </button>
                   <a
                     className="inline-flex cursor-pointer justify-center rounded-lg text-xs font-semibold py-2.5 px-4 bg-slate-900 text-white hover:bg-slate-700  ml-4"
                     href="https://www.irishrail.ie/en-ie/train-timetables/live-departure-train-times?key=skerries&REQ0JourneyStopskeyID=&HWAI%3DJS%21js=yes&HWAI%3DJS%21ajax=yes#live-departure-anchor"
-                    target="_blank">
+                    target="_blank"
+                  >
                     View on Irish Rail
                   </a>
                 </div>
