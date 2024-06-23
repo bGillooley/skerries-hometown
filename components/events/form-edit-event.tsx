@@ -6,11 +6,7 @@ import { useState } from "react";
 
 export default function EventsEditForm({ event }: { event: EventForm }) {
   let d = new Date(event.eventDate);
-  const dateTimeLocalValue = new Date(
-    d.getTime() - d.getTimezoneOffset() * 60000
-  )
-    .toISOString()
-    .slice(0, -5);
+  const dateTimeLocalValue = new Date(d.getTime()).toISOString().slice(0, -5);
 
   const [theEventDate, setTheEventDate] = useState(dateTimeLocalValue);
   const initialState = { message: null, errors: {} };

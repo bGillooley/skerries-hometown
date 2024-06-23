@@ -45,13 +45,13 @@ declare global {
 }
 
 export default function EventModule({ event }: { event: Event }) {
-  const d = new Date(event.eventDate).toISOString();
-
-  const eventDateTime = new Date(event.eventDate).toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
+  const properTime = new Date(event.eventDate).toLocaleTimeString("en", {
+    timeStyle: "short",
     hour12: false,
+    timeZone: "UTC",
   });
+
+  console.log("the time please...", event.title, properTime);
   const pathname = usePathname();
 
   const encodedAddress = encodeURIComponent(event.address);
@@ -120,7 +120,7 @@ export default function EventModule({ event }: { event: Event }) {
             {isToday(new Date(event.eventDate))
               ? "Today"
               : formatDateWeekDay(event.eventDate.toString())}
-            - {eventDateTime}
+            - {properTime}
           </div>
           <div className="text-base text-teal-600 font-semibold">
             {event.title}

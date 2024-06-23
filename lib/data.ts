@@ -1,5 +1,4 @@
 import prisma from "./prisma";
-import { foramtDbDateString } from "@/lib/utils";
 import { addHours } from "@/lib/utils";
 export async function fetchEventById(id: string) {
   try {
