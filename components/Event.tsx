@@ -116,11 +116,13 @@ export default function EventModule({ event }: { event: Event }) {
         </div>
         <div className="grow">
           <div className="text-sm text-slate-500" suppressHydrationWarning>
-            <span className="font-bold capitalize ">{event.category}</span> -
+            <span className="font-bold capitalize ">{event.category}</span>
+            {" - "}
             {isToday(new Date(event.eventDate))
               ? "Today"
               : formatDateWeekDay(event.eventDate.toString())}
-            - {properTime}
+            {"  "}
+            {properTime}
           </div>
           <div className="text-base text-teal-600 font-semibold">
             {event.title}
