@@ -11,7 +11,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Skerries Hometown App",
-  description: "A local app for Skerries locals",
+  description: "A local app for Skerries",
   robots: {
     index: false,
     follow: false,
