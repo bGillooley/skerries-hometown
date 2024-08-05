@@ -1,6 +1,7 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import type { NextRequest } from "next/server";
 
+export const revalidate = 0;
 export const dynamic = "force-dynamic";
 
 export function GET(request: NextRequest) {
