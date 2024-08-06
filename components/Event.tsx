@@ -51,7 +51,6 @@ export default function EventModule({ event }: { event: Event }) {
     timeZone: "UTC",
   });
 
-  console.log("the time please...", event.title, properTime);
   const pathname = usePathname();
 
   const encodedAddress = encodeURIComponent(event.address);
@@ -65,14 +64,11 @@ export default function EventModule({ event }: { event: Event }) {
 
   useEffect(() => {
     if (!modalVisible) {
-      console.log("nothing there");
       return;
     } else {
-      console.log("Look, it works");
       window.history.pushState({ modalVisible: true }, "Some Title");
       window.addEventListener("popstate", handdlePopState);
       return () => {
-        console.log("MITCH");
         window.removeEventListener("popstate", handdlePopState);
       };
     }

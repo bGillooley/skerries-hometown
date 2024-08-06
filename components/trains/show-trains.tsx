@@ -12,7 +12,6 @@ export default function ShowTrains() {
         onClick={() => setShowTrains(true)}
         onKeyUp={(e) => {
           e.key === "Enter" && setShowTrains(true);
-          console.log("Key up ", e.key);
         }}
         tabIndex={0}
       >

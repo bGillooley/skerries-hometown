@@ -14,7 +14,6 @@ export default function ShowWeather() {
         }}
         onKeyUp={(e) => {
           e.key === "Enter" && setShowWeather(true);
-          console.log("Key up ", e.key);
         }}
         tabIndex={0}
       >

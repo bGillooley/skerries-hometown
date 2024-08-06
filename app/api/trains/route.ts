@@ -18,7 +18,7 @@ export async function GET(request: Request) {
         trains["details" + (i + 1)] = [];
         let obj = {};
         $(element)
-          .find("tbody > tr:not([class])")
+          .find("tbody:first   > tr:not([class])")
           .each((idx, elm) => {
             let obj = {
               destination: $(elm)
@@ -35,7 +35,6 @@ export async function GET(request: Request) {
             // trains["heading"];
           });
       });
-
     return Response.json(trains);
   } catch (err) {
     console.log(err);

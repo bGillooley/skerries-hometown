@@ -51,7 +51,6 @@ export async function fetchFilteredEvents(category: string) {
           eventDate: "asc",
         },
       });
-      console.log("Got the filtered events fresh there!");
       return events;
     } catch (error) {
       console.error("Database Error:", error);
@@ -71,7 +70,6 @@ export async function fetchFilteredEvents(category: string) {
           eventDate: "asc",
         },
       });
-      console.log("Got some of the other filtered events there now");
       return events;
     } catch (error) {
       console.error("Database Error:", error);
