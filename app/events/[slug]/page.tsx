@@ -7,10 +7,6 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Skerries Hometown App - Browse Events",
   description: "Skerries Community App",
-  robots: {
-    follow: false,
-    index: false,
-  },
 };
 
 import clsx from "clsx";

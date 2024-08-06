@@ -12,10 +12,6 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Skerries Hometown App",
   description: "A local app for Skerries",
-  robots: {
-    index: false,
-    follow: false,
-  },
 };
 
 export default function RootLayout({
