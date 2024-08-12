@@ -5,7 +5,7 @@ import { unstable_cache } from "next/cache";
 const getCachedEvents = unstable_cache(
   async () => fetchHomepageEvents(),
   ["homepage-events-cached"],
-  { tags: ["homepage-events"] }
+  { tags: ["homepage-events"], revalidate: 86400 }
 );
 
 export default async function HomepageEvents() {
