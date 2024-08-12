@@ -21,7 +21,7 @@ export async function sendContactMail(contactEmail: unknown) {
 
   const { data, error } = await resend.emails.send({
     from: "Skerries Hometown <access@hometown.ie>",
-    to: ["gillooley@gmail.com"],
+    to: ["jackdinan@gmail.com"],
     subject: "Message from Access form on SKERRIES HOMETOWN",
     text: "hi there",
     react: ContactEmailAdminTemplate({
