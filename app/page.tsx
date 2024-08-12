@@ -111,14 +111,31 @@ export default async function Home() {
                     <ShowWeather />
                   </Suspense>
                 </div>
-                <div className="row-span-3 col-start-4 hidden lg:block  row-start-4">
-                  <div className="flex flex-col place-content-end relative rounded-md w-full h-full bg-teal-600">
+                <div className="lg:row-span-3 lg:col-start-4 lg:block  lg:row-start-4 mt-6 lg:mt-0">
+                  <div className="flex flex-col justify-center relative rounded-md w-full h-full bg-teal-600">
+                    <div className="absolute rounded inset-0 w-full h-full bg-black/50 z-10" />
                     <Image
-                      className="z-0 absolute w-full h-full object-cover rounded"
+                      className="z-0 absolute  w-full h-full object-cover rounded"
                       src={themeImg3}
                       quality={50}
                       alt="Skerries Rules"
                     />
+                    <div className="relative z-20 p-4 text-slate-100">
+                      <div className="text-2xl font-bold text-center">
+                        Get Involved
+                      </div>
+                      <div className="text-sm mt-2 mb-4 text-center">
+                        Want to add your events? Get in touch...
+                      </div>
+                      <Link
+                        href="/access"
+                        className="block text-black  mb-6 md:mb-0 w-full xl:w-auto cursor-pointer rounded-md text-center font-semibold py-2 px-3 bg-beach hover:bg-[#C3933D]"
+                        title="Add your events"
+                        tabIndex={0}
+                      >
+                        ADD YOUR EVENTS
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,3 +1,10 @@
+import { z } from "zod";
+export const ContactEmailSchema = z.object({
+  name: z.string().min(1, { message: "Please enter your name" }),
+  email: z.string().email(),
+  message: z.string().min(1, { message: "Please enter your message" }),
+});
+
 export type Event = {
   id: string;
   title: string;

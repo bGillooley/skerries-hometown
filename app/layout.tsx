@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-
+import { Toaster } from "react-hot-toast";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -24,6 +24,7 @@ export default function RootLayout({
       <body>
         {children}
         <Analytics />
+        <Toaster position="top-right" toastOptions={{ duration: 5000 }} />
       </body>
     </html>
   );
