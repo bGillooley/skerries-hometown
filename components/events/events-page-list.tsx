@@ -7,7 +7,7 @@ import { unstable_cache } from "next/cache";
 const getAllCachedEvents = unstable_cache(
   async (category) => fetchFilteredEvents(category),
   ["all-events-cached"],
-  { tags: ["all-events"] }
+  { tags: ["all-events"], revalidate: 86400 }
 );
 
 export default async function EventsPageList({
